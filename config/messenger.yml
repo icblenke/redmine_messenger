@@ -1,10 +1,10 @@
 development: &development
   type: xmpp4r
-  jid: ms.redmine@gmail.com
-  password: ms.redmine123
-  host: 209.85.137.125
+  jid: jid@jabber.com
+  password: password
+  host: jabber.com
   port: 5222
-  message: redmine.becomo
+  status: hello world
 
 test:
   type: mock
