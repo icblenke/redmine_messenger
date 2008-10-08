@@ -1,0 +1,13 @@
+development: &development
+  type: xmpp4r
+  jid: ms.redmine@gmail.com
+  password: ms.redmine123
+  host: 209.85.137.125
+  port: 5222
+  message: redmine.becomo
+
+test:
+  type: mock
+
+production:
+  <<: *development
