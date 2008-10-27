@@ -19,7 +19,7 @@ module RedmineMessenger
 
       @parameters.each do |param|
         if tokens.empty? and param.options[:required]
-          return "Param missing. See 'help #{@command}"
+          return false
         elsif param.options[:type] == :integer
           params[param.name.to_sym] = Integer(tokens.shift)
         else
@@ -53,15 +53,7 @@ module RedmineMessenger
     def param(name, options = {})
       @parameters << Param.new(name, options)
     end
-        
-    def short_help
-      "#{@command.to_s}: short\n"
-    end
-    
-    def long_help
-      "#{@command.to_s}: long\n"
-    end
-    
+       
     def to_s
       responce = @command.to_s
       unless @parameters.empty?

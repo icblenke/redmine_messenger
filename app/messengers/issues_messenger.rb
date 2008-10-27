@@ -13,7 +13,7 @@ class IssuesMessenger < RedmineMessenger::Base
     if issues = Issue.find_by_assigned_to_id(user.user_id)
       responce = ""
       issues.each do |issue|
-        responce << "#{issue.id}: #{issue.subject}\n"
+        responce << "\##{issue.id} #{issue.project.name} - #{issue.subject}\n"
       end
       responce
     else
@@ -22,8 +22,11 @@ class IssuesMessenger < RedmineMessenger::Base
   end
   
   def issue(user, params = {})   
-    if issue = Issue.find(params[:issue_id])
-      "#{issue.subject}\n\n#{issue.description}"
+    if issue = Issue.find_by_id(params[:issue_id]) 
+      responce = "\##{issue.id} #{issue.project.name} - #{issue.subject} (#{issue.status.name})"
+      responce << l(:messenger_command_issue_assigned_to) << issue.assigned_to.login << "\n" if issue.assigned_to
+      responce << issue.description if issue.description and issue.description.size > 1
+      responce
     else
       l(:messenger_command_issue_not_found)
     end

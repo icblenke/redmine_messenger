@@ -5,7 +5,7 @@ module RedmineMessenger
       
     def initialize(config)
       @config = config
-      @default_options = { :pattern => nil, :default => false }     
+      @default_options = { :pattern => nil }     
       @handlers = []
     end
 
@@ -16,8 +16,9 @@ module RedmineMessenger
     def receive_message(from, body)
       received = false
       @handlers.each do |object, method, options|
-        if (not options[:default] and not options[:pattern]) or (options[:default] and not received) or (options[:pattern] and options[:pattern] =~ body)
-          object.send(method, from, body) and received = true          
+        if options[:pattern].nil? or options[:pattern] =~ body 
+          received = true
+          object.send(method, from, body)
         end        
       end      
       unless received        
