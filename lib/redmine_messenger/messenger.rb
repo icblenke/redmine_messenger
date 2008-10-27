@@ -17,8 +17,11 @@ module RedmineMessenger
       received = false
       @handlers.each do |object, method, options|
         if (not options[:default] and not options[:pattern]) or (options[:default] and not received) or (options[:pattern] and options[:pattern] =~ body)
-          object.send(method, from, body) and received = true
-        end
+          object.send(method, from, body) and received = true          
+        end        
+      end      
+      unless received        
+        RedmineMessenger::Base.receive_command_not_registered(from, body)
       end
     end
     

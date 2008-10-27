@@ -26,12 +26,12 @@ module RedmineMessenger
         @client.send(Jabber::Message.new(to, body).set_type(:chat))
       end
 
-      #def destroy
-      #  if @client
-      #    @client.close
-      #    @client = nil
-      #  end
-      #end
+      def destroy
+        if @client
+          @client.close
+          @client = nil
+        end
+      end
 
     end
   end
