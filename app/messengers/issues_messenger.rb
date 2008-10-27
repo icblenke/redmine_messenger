@@ -31,5 +31,37 @@ class IssuesMessenger < RedmineMessenger::Base
       l(:messenger_command_issue_not_found)
     end
   end
-  
+
+#  General:
+#    hello
+#    show (entry|entries|timer|timers|projects)
+#
+#Entries:
+#    log
+#    unlog
+#
+#Timers:
+#    pause
+#    resume
+#    start
+#    finish
+#    cancel
+#    note
+
+#  Show full details of the entry by entry id.
+#    > show entry <entry id>
+
+#Show things.  (type: 'help show <subcommand>').
+#    > show entries
+#    > show entry <entry id>
+#    > show timers
+#    > show timer <timer id>
+#    > show projects
+
+#  Show last 50 entries by you.
+#    > show entries
+
+#  Start timer for the billing code.
+#    > start <billing code>
+
 end
