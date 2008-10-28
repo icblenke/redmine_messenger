@@ -1,27 +1,26 @@
-<%= content_tag('div', l(:notice_messenger_with_code, @user_messenger.verification_code), :class => 'flash notice') if @user_messenger.verification_code and not flash[:notice] %>
+<%= content_tag('div', l(:messenger_view_notice_please_verify, @user_messenger.verification_code), :class => 'flash notice') if @user_messenger.verification_code and not flash[:notice] %>
 
-<h2><%=l(:label_messenger)%></h2>
+<h2><%=l(:messenger_view_label_messenger)%></h2>
+
 <%= error_messages_for 'user_messenger' %>
 
-<% form_for :user_messenger, @user_messenger, :url => { :action => "index" },
-                          :builder => TabularFormBuilder, 
-                          :lang => current_language,
-                          :html => { :id => 'my_account_form' } do |f| %>
-<div class="splitcontentleft">
-<h3><%=l(:label_messenger_configuration)%></h3>
-<div class="box tabular">
-<p><%= f.text_field :messenger_id %></p>
-</div>
-
-<%= submit_tag l(:button_save) %>
-</div>
+<% form_for :user_messenger, @user_messenger, :url => { :action => "index" }, :builder => TabularFormBuilder, :lang => current_language, :html => { :id => 'my_account_form' } do |f| %>
+    <div class="splitcontentleft">
+        <h3><%=l(:messenger_view_label_configuration)%></h3>
+        <div class="box tabular">
+            <p><%= f.text_field :messenger_id %></p>
+        </div>
+        <%= submit_tag l(:button_save) %>
+    </div>
 <% end %>
 
 <div class="splitcontentright">
-<h3><%=l(:field_messenger_help)%></h3>
-<div class="box">
-TODO: help
-</div>
+    <h3><%=l(:messenger_view_label_help)%></h3>
+    <div class="box">
+        <p><%= l(:messenger_view_help_header) %></p>
+        <p><%= @user_messenger_help.gsub(/\n/, "<br/>\n") %></p>
+        <p><%= l(:messenger_view_help_footer) %></p>
+    </div>
 </div>
 
-<% html_title(l(:label_messenger)) -%>
+<% html_title(l(:messenger_view_label_messenger)) -%>

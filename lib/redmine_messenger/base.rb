@@ -47,6 +47,10 @@ module RedmineMessenger
         Messenger.add_message_handler(instance.class, "receive_#{cmd.method.to_s}", cmd.options)        
       end
       
+      def help_to_string(command = nil)
+        return "HELP"
+      end
+      
       def commands
         @commands ||= {}
       end

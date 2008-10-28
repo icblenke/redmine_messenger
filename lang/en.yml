@@ -1,19 +1,28 @@
-label_messenger: Messenger
-label_messenger_configuration: Configuration
-field_messenger: Messenger ID
-field_messenger_help: Help
-notice_messenger_with_code: Please verify your messenger account with code is %s.
-notice_messenger_updated: Messenger configuration was successfully updated.
-notice_messenger_updated_with_code: Messenger configuration was successfully updated. Please verify your messenger account with code is %s.
+messenger_menu_label: Messenger
+messenger_view_label_messenger: Messenger
+messenger_view_label_configuration: Configuration
+messenger_view_label_help: Help
+messenger_view_notice_please_verify: Please verify your messenger account with code is %s.
+messenger_controller_notice_updated: Messenger configuration was successfully updated.
+messenger_controller_notice_updated_with_code: Messenger configuration was successfully updated. Please verify your messenger account with code is %s.
 
-help_not_found: I'm sorry, I don't understand '%s'.  Maybe try typing 'help'.
+field_messenger: Messenger ID
 
 messenger_error_param_missing: Param missing, see 'help %s' for more information.
+
+messenger_verify_user_verified: Succesful verification. Welcome aboard!
+messenger_verify_wrong_code: Given code doesn't match to your verification code.
+messenger_verify_user_not_registered: Your messenger account hasn't been found.
+messenger_verify_not_verified: Please verify your messenger account with code.
+
+messenger_view_help_header: Header
+messenger_view_help_footer: Footer
 
 messenger_help_header_short: Help for Redmine Messenger!
 messenger_help_header_long: Help for command '%s'
 messenger_help_footer_short: Type 'help <command>' for more information about the command.
 messenger_help_footer_long: Type 'help' for short information about all commands.
+messenger_help_not_found: I'm sorry, I don't understand '%s'.  Maybe try typing 'help'.
 
 messenger_help_group_general: General
 messenger_help_group_issues: Issues
@@ -22,11 +31,6 @@ messenger_help_command_issues_short: Issues short
 messenger_help_command_issue_short: Issue short
 messenger_help_command_issues_long: Issues long
 messenger_help_command_issue_long: "Issue long \n test"
-
-messenger_verify_user_verified: Succesful verification. Welcome aboard!
-messenger_verify_wrong_code: Given code doesn't match to your verification code.
-messenger_verify_user_not_registered: Your messenger account hasn't been found.
-messenger_verify_not_verified: Please verify your messenger account with code.
     
 messenger_command_issues_not_found: You haven't any assigned issues.
 messenger_command_issue_not_found: Issue with given id doesn't exists.
