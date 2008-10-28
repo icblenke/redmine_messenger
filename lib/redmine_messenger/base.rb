@@ -12,24 +12,25 @@ module RedmineMessenger
           message = instance.send($1, parameters)
           Messenger.send_message(message[0], message[1])
         elsif /^receive_([_a-z]\w*)/ =~ method.id2name
-          messenger_id, body = parameters
+          messenger_id, message_body = parameters
+
           if user = UserMessenger.find_by_messenger_id(messenger_id)
-            if user.verified?
+            if user.verified?              
               if command = Base.commands[$1.to_sym]
-                params = command.send(:receive, user, body)
+                params = command.params_for_message(message_body)                
                 unless params
                   base_instance.param_missing(messenger_id, $1)
                 else
-                  Messenger.send_message(messenger_id, instance.send(command.method, params[0], params[1]))
+                  Messenger.send_message(messenger_id, instance.send(command.method, messenger_id, params))
                 end
               else
-                base_instance.help(messenger_id, body)
+                base_instance.help(messenger_id, message_body)
               end
             else 
-              base_instance.verify(messenger_id, body)
+              base_instance.verify(messenger_id, message_body)
             end
           else
-            base_instance.verify(messenger_id, body)
+            base_instance.verify(messenger_id, message_body)
           end          
         else
           super(method, parameters)
@@ -38,7 +39,7 @@ module RedmineMessenger
         "#{e.message}\n#{e.backtrace.join("\n")}"
       end
 
-      def register_message_listener(command, options = {})
+      def register_handler(command, options = {})
         cmd = Command.new(command, options)
         if block_given?
           yield(cmd)

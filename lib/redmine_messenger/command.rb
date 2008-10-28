@@ -1,29 +1,35 @@
 module RedmineMessenger
+
+  # Definition of registered command. This class is block parameter of <tt>RedmineMessenger::Base#register_hander</tt> method.
   class Command
 
     attr_reader :group, :command, :method, :options
 
-    def initialize(command, options = {})
+    # Create command with given +command_name+.
+    # Additional +options+ is <tt>:pattern</tt> which must match to the message body if handler should be invoke.
+    def initialize(command_name, options = {})
       @group = :general
-      @command = command.to_sym
-      @method = command.to_sym    
+      @command = command_name.to_sym
+      @method = command_name.to_sym    
       @options = options
-      @options[:pattern] ||= Regexp.new("^#{command.to_s}")
+      @options[:pattern] ||= Regexp.new("^#{command_name.to_s}\\b")
       @parameters = []
     end
-    
-    def receive(from, body)
+
+    # Returns param array for given body. False if parameters are incorrect.    
+    def params_for_message(message_body)
       params = {}
-      tokens = body.split(/\s+/)
+      tokens = message_body.split(/\s+/)
       tokens.shift if tokens[0] == @command.to_s
 
       @parameters.each do |param|
         if tokens.empty? and param.options[:required]
           return false
-        elsif param.options[:type] == :integer
-          params[param.name.to_sym] = Integer(tokens.shift)
+        elsif param.options[:greedy]
+          params[param.name.to_sym] = param.value_to_type(tokens.join(" "))
+          tokens = []
         else
-          params[param.name.to_sym] = tokens.shift
+          params[param.name.to_sym] = param.value_to_type(tokens.shift)
         end
       end
 
@@ -31,9 +37,10 @@ module RedmineMessenger
         params[:other] = tokens.join(" ")
       end
 
-      [from, params]
+      params
     end
-        
+       
+    # Set or get group, default is :general.
     def group(group = nil)
       if group.nil?
         @group 
@@ -42,6 +49,7 @@ module RedmineMessenger
       end
     end
     
+    # Set or get method, default is <tt>command_name</tt>.
     def method(method = nil)
       if method.nil?
         @method
@@ -50,32 +58,50 @@ module RedmineMessenger
       end
     end
     
+    # Add new param (see <tt>Param</tt>).
     def param(name, options = {})
       @parameters << Param.new(name, options)
     end
-       
+
+    # Returns command name and all its parameters.
     def to_s
-      responce = @command.to_s
-      unless @parameters.empty?
-        params_names = []
-        @parameters.each do |param|
-          params_names << param.name.to_s
+      unless @command_to_string
+        @command_to_string = @command.to_s
+        unless @parameters.empty?
+          params_names = []
+          @parameters.each do |param|
+            params_names << param.name.to_s
+          end
+          @command_to_string << " <" << params_names.join(",") << ">"
         end
-        responce << " <" << params_names.join(",") << ">"
       end
-      responce
+      @command_to_string
     end
     
   end
   
+  # Definition of command's parameter (see <tt>Command.param</tt>).
   class Param
 
     attr_reader :name, :options
     
+    # Create param with given +name+.
+    # Additional +options+ are <tt>:required</tt> (true by default), <tt>:greedy</tt> (false by default, takes all command string if true) and <tt>:type</tt> (:string by default, others are :integer, :float).
     def initialize(name, options)
       @name = name
-      @options = { :required => true, :type => :string }
+      @options = { :required => true, :type => :string, :greedy => false }
       @options.merge!(options)      
+    end
+
+    # Get param value in proper type.
+    def value_to_type(value)
+      if @options[:type] == :integer
+        Integer(value)
+      elsif @options[:type] == :float
+        Float(value)
+      else
+        value
+      end
     end
 
   end

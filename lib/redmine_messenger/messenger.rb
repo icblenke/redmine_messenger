@@ -3,8 +3,7 @@ module RedmineMessenger
 
     attr_reader :config
     
-    # Registers message handler. Handlers are invoke when messenger receive message (see <tt>receive_message</tt>).
-    # Additional +options+ is <tt>:pattern</tt> which must match to the body if handler should be invoke.
+    # Registers message handler. Handlers are invoke when messenger receive message (see <tt>receive_message</tt> and <tt>Command</tt>).
     def register_handler(object, method, options)      
       @handlers << [object, method, @default_options.merge(options)]
     end
