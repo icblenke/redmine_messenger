@@ -12,24 +12,24 @@ module RedmineMessenger
           message = instance.send($1, parameters)
           Messenger.send_message(message[0], message[1])
         elsif /^receive_([_a-z]\w*)/ =~ method.id2name
-          mid, body = parameters
-          if user = UserMessenger.find_by_messenger_id(mid)
+          messenger_id, body = parameters
+          if user = UserMessenger.find_by_messenger_id(messenger_id)
             if user.verified?
               if command = Base.commands[$1.to_sym]
                 params = command.send(:receive, user, body)
                 unless params
-                  base_instance.param_missing(mid, $1)
+                  base_instance.param_missing(messenger_id, $1)
                 else
-                  Messenger.send_message(mid, instance.send(command.method, params[0], params[1]))
+                  Messenger.send_message(messenger_id, instance.send(command.method, params[0], params[1]))
                 end
               else
-                base_instance.help(mid, body)
+                base_instance.help(messenger_id, body)
               end
             else 
-              base_instance.verify(mid, body)
+              base_instance.verify(messenger_id, body)
             end
           else
-            base_instance.verify(mid, body)
+            base_instance.verify(messenger_id, body)
           end          
         else
           super(method, parameters)
@@ -44,7 +44,7 @@ module RedmineMessenger
           yield(cmd)
         end
         Base.commands[cmd.command] = cmd
-        Messenger.add_message_handler(instance.class, "receive_#{cmd.method.to_s}", cmd.options)        
+        Messenger.register_handler(instance.class, "receive_#{cmd.method.to_s}", cmd.options)        
       end
       
       def help_to_string(command = nil)
@@ -73,12 +73,12 @@ module RedmineMessenger
 
     end
 
-    def param_missing(mid, command)
-      Messenger.send_message(mid, l(:messenger_error_param_missing, command))
+    def param_missing(messenger_id, command)
+      Messenger.send_message(messenger_id, l(:messenger_error_param_missing, command))
     end
     
-    def verify(mid, code)
-      if user = UserMessenger.find_by_messenger_id(mid)
+    def verify(messenger_id, code)
+      if user = UserMessenger.find_by_messenger_id(messenger_id)
         if code =~ /^(\d+)/
           if user.verify($1)
             responce = l(:messenger_verify_user_verified)
@@ -91,10 +91,10 @@ module RedmineMessenger
       else
         responce = l(:messenger_verify_user_not_registered)
       end
-      Messenger.send_message(mid, responce)
+      Messenger.send_message(messenger_id, responce)
     end
       
-    def help(mid, body)
+    def help(messenger_id, body)
       body = body.gsub(/help/, "").strip
         
       if not body.blank? and command = Base.commands[body.to_sym]
@@ -122,7 +122,7 @@ module RedmineMessenger
         responce << l(:messenger_help_footer_short)
       end
         
-      Messenger.send_message(mid, responce)
+      Messenger.send_message(messenger_id, responce)
     end
 
   end
