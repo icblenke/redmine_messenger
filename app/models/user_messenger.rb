@@ -4,19 +4,12 @@ class UserMessenger < ActiveRecord::Base
 
   belongs_to :user
 
+  # Returns false if this user hasn't been verified yet -- that is, a verification code is not nil.
   def verified?
     verification_code.nil?
   end
   
-  def self.user_by_messenger_id(mid)
-    user_messenger = UserMessenger.find_by_messenger_id(mid)
-    
-    return nil unless user_messenger
-    return nil unless user_messenger.verified?
-
-    user_messenger.user    
-  end
-  
+  # Verify user. Returns true if user had been verified before or given code matches to verification code.
   def verify(code)
     return true unless self.verification_code
     return false unless self.verification_code == code    
@@ -26,6 +19,7 @@ class UserMessenger < ActiveRecord::Base
 
   protected
 
+  # Set new verification code if messenger_id has been changed.
   def before_save
     self.verification_code = rand(999999).to_s.center(6, rand(5).to_s) if self.messenger_id_changed?
     true
