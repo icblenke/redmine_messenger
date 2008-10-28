@@ -1,0 +1,60 @@
+messenger_menu_label: Komunikator
+messenger_view_label_messenger: Komunikator
+messenger_view_label_configuration: Konfiguracja
+messenger_view_label_help: Pomoc
+messenger_view_notice_please_verify: Zweryfikuj swoje konto za pomocą kodu %s.
+messenger_controller_notice_updated: Konfiguracja została zapisana.
+messenger_controller_notice_updated_with_code: Konfiguracja została zapisana. Zweryfikuj swoje konto za pomocą kodu %s.
+
+field_messenger: Komunikator
+
+messenger_error_param_missing: Brakujący parametr, zobacz 'help %s' aby uzyskać więcej informacji.
+
+messenger_verify_user_verified: Weryfikacja zakończona sukcesem. Witamy na pokładzie!
+messenger_verify_wrong_code: Kod nie został poprawnie zweryfikowany.
+messenger_verify_user_not_registered: Twoje konto nie zostało znalezione.
+messenger_verify_not_verified: Zweryfikuj swoje konto za pomocą otrzymanego kodu.
+
+messenger_view_help: Pomoc TODO
+
+messenger_help_header_short: Pomoc dla Redmine Messenger!
+messenger_help_header_long: Pomoc dla '%s'
+messenger_help_footer_short: Wpisz 'help <command>' aby uzyskać szczegółowe informacje o komendzie.
+messenger_help_footer_long: Wpisz 'help' aby uzyskać listę wszystkich komend.
+messenger_help_not_found: Przykro mi, ale nie znam komendy '%s'. Może zacznij od 'help'.
+
+messenger_help_group_general: Ogólne
+
+messenger_help_group_issues: Zagadnienia
+    
+messenger_help_group_timers: Liczniki
+
+messenger_help_command_start_short: Uruchom licznik dla podanego zagadnienia.
+messenger_help_command_finish_short: Wyłącz licznik i zaloguj czas.
+messenger_help_command_status_short: Spradź status swojego licznika.
+messenger_help_command_note_short: Dodaj komentarz do aktywnego licznika.
+messenger_help_command_pause_short: Zatrzymaj aktywny licznik.
+messenger_help_command_resume_short: Włącz zatrzymany licznik.
+messenger_help_command_cancel_short: Anuluj aktywny licznik.
+
+messenger_help_command_start_long: Uruchom licznik dla podanego zagadnienia.
+messenger_help_command_finish_long: Wyłącz licznik i zaloguj czas.
+messenger_help_command_status_long: Spradź status swojego licznika.
+messenger_help_command_note_long: Dodaj komentarz do aktywnego licznika.
+messenger_help_command_pause_long: Zatrzymaj aktywny licznik.
+messenger_help_command_resume_long: Włącz zatrzymany licznik.
+messenger_help_command_cancel_long: Anuluj aktywny licznik.
+
+messenger_command_timers_started: Licznik dla '%s' został uruchomiony.
+messenger_command_timers_issue_not_found: Nieznaleziono zagadnienia.
+messenger_command_timers_resumed: Licznik dla '%s' został uruchomiony.
+messenger_command_timers_not_resumed: Licznik dla '%s' był już uruchomiony.
+messenger_command_timers_paused: Licznik dla '%s' został zatrzymany.
+messenger_command_timers_not_paused: Licznik dla '%s' był już zatrzymany.
+messenger_command_timers_cancelled: Licznik dla '%s' został anulowamy.
+messenger_command_timers_finished: Licznik dla '%s' został zakończony.
+messenger_command_timers_not_finished: Licznik dla '%s' nie został zakończony.
+messenger_command_timers_noted: Komentarz do licznika dla '%s' został dodany.
+messenger_command_timers_running: Licznik dla '%s' został uruchomiony.
+messenger_command_timers_running_status: Licznik dla '%s' został uruchomiony. Przepracowaneś już %d minut.
+messenger_command_timers_not_running: Licznik nie został uruchomiony.

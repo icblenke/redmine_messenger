@@ -20,6 +20,7 @@ module RedmineMessenger
     def params_for_message(message_body)
       params = {}
       tokens = message_body.split(/\s+/)
+      
       tokens.shift if tokens[0] == @command.to_s
 
       @parameters.each do |param|

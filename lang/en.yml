@@ -24,13 +24,37 @@ messenger_help_footer_long: Type 'help' for short information about all commands
 messenger_help_not_found: I'm sorry, I don't understand '%s'.  Maybe try typing 'help'.
 
 messenger_help_group_general: General
-messenger_help_group_issues: Issues
 
-messenger_help_command_issues_short: Issues short TODO
-messenger_help_command_issue_short: Issue short TODO
-messenger_help_command_issues_long: Issues long TODO
-messenger_help_command_issue_long: "Issue long \n test TODO"
+messenger_help_group_issues: Issues
     
-messenger_command_issues_not_found: You haven't any assigned issues.
-messenger_command_issue_not_found: Issue with given id doesn't exists.
-messenger_command_issue_assigned_to: "Assigned to :"
+messenger_help_group_timers: Timers    
+
+messenger_help_command_start_short: Start timer for given issue.
+messenger_help_command_finish_short: Finish running timer and log time.
+messenger_help_command_status_short: Get status of your timer.
+messenger_help_command_note_short: Add note to your running timer.
+messenger_help_command_pause_short: Pause your running timer.
+messenger_help_command_resume_short: Resume your paused timer.
+messenger_help_command_cancel_short: Cancel your running timer.
+
+messenger_help_command_start_long: Start timer for given issue.
+messenger_help_command_finish_long: Finish running timer and log time.
+messenger_help_command_status_long: Get status of your timer.
+messenger_help_command_note_long: Add note to your running timer.
+messenger_help_command_pause_long: Pause your running timer.
+messenger_help_command_resume_long: Resume your paused timer.
+messenger_help_command_cancel_long: Cancel your running timer.
+    
+messenger_command_timers_started: Timer for issue '%s' has been started.
+messenger_command_timers_issue_not_found: Issue can't be found.
+messenger_command_timers_resumed: Timer for issue '%s' has been resumed.
+messenger_command_timers_not_resumed: Timer for issue '%s' has been already running.
+messenger_command_timers_paused: Timer for issue '%s' has been paused.
+messenger_command_timers_not_paused: Timer for issue '%s' has been already paused.
+messenger_command_timers_cancelled: Timer for issue '%s' has been cancelled.
+messenger_command_timers_finished: Timer for issue '%s' has been finished.
+messenger_command_timers_not_finished: Timer for issue '%s' can't be finished.
+messenger_command_timers_noted: Timer's note for issue '%s' has been added.
+messenger_command_timers_running: Timer for issue '%s' has been started.
+messenger_command_timers_running_status: Timer for issue '%s' has been started. You've spent on it %d minutes.
+messenger_command_timers_not_running: Timer hasn't been started.

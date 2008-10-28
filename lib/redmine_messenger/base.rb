@@ -35,7 +35,7 @@ module RedmineMessenger
                   base_instance.param_missing(messenger_id, $1)
                 else
                   # Calling handler.
-                  Messenger.send_message(messenger_id, instance.send(command.method, messenger_id, params))
+                  Messenger.send_message(messenger_id, instance.send(command.method, user, params))
                 end
               else
                 # Command not found, show help.
