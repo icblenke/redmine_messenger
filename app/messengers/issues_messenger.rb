@@ -1,15 +1,17 @@
 class IssuesMessenger < RedmineMessenger::Base
 
-  register_message_listener :issues do |cmd|
+  register_handler :issues do |cmd|
     cmd.group :issues
   end
   
-  register_message_listener :issue do |cmd|
+  register_handler :issue do |cmd|
     cmd.group :issues
     cmd.param :issue_id, :type => :integer, :required => true
+    cmd.param :name, :type => :string, :required => false, :greedy => true
   end
 
   def issues(user, params = {})
+    p params
     if issues = Issue.find_by_assigned_to_id(user.user_id)
       responce = ""
       issues.each do |issue|
@@ -21,7 +23,8 @@ class IssuesMessenger < RedmineMessenger::Base
     end
   end
   
-  def issue(user, params = {})   
+  def issue(user, params = {})
+    p params
     if issue = Issue.find_by_id(params[:issue_id]) 
       responce = "\##{issue.id} #{issue.project.name} - #{issue.subject} (#{issue.status.name})"
       responce << l(:messenger_command_issue_assigned_to) << issue.assigned_to.login << "\n" if issue.assigned_to

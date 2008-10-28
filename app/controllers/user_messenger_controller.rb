@@ -2,7 +2,14 @@ class UserMessengerController < ApplicationController
 
   def index    
     user = User.current
-    @user_messenger_help = RedmineMessenger::Base.help_to_string
+    
+    @groups = {}
+
+    RedmineMessenger::Base.commands.each_value do |cmd|
+      @groups[cmd.group] ||= []
+      @groups[cmd.group] << cmd
+    end
+    
     @user_messenger = UserMessenger.find_by_user_id(user.id) 
     @user_messenger ||= UserMessenger.new
     if request.post?

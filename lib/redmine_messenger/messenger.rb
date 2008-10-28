@@ -32,6 +32,7 @@ module RedmineMessenger
         end        
       end      
       unless received        
+        # TODO It's not safe. Command can have name 'command_not_registered'.
         RedmineMessenger::Base.receive_command_not_registered(messenger_id, body)
       end
     end

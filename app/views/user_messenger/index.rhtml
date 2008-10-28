@@ -5,22 +5,29 @@
 <%= error_messages_for 'user_messenger' %>
 
 <% form_for :user_messenger, @user_messenger, :url => { :action => "index" }, :builder => TabularFormBuilder, :lang => current_language, :html => { :id => 'my_account_form' } do |f| %>
-    <div class="splitcontentleft">
-        <h3><%=l(:messenger_view_label_configuration)%></h3>
-        <div class="box tabular">
-            <p><%= f.text_field :messenger_id %></p>
-        </div>
-        <%= submit_tag l(:button_save) %>
-    </div>
+  <div class="splitcontentleft">
+      <h3><%=l(:messenger_view_label_configuration)%></h3>
+      <div class="box tabular">
+          <p><%= f.text_field :messenger_id %></p>
+      </div>
+      <%= submit_tag l(:button_save) %>
+  </div>
 <% end %>
 
 <div class="splitcontentright">
     <h3><%=l(:messenger_view_label_help)%></h3>
     <div class="box">
-        <p><%= l(:messenger_view_help_header) %></p>
-        <p><%= @user_messenger_help.gsub(/\n/, "<br/>\n") %></p>
-        <p><%= l(:messenger_view_help_footer) %></p>
+        <p><%= l(:messenger_view_help) %></p>
     </div>
+    <% @groups.each do |grp, cmds| %>
+        <h3><%= l("messenger_help_group_#{grp.to_s}".to_sym) %></h3>
+        <div class="box">
+          <% cmds.each do |cmd| %>
+            <p><strong><%= h(cmd.to_s) %></strong></p>
+            <p><%= l("messenger_help_command_#{cmd.command.to_s}_long".to_sym) %></p>
+          <% end %>
+        </div>           
+    <% end %>
 </div>
 
 <% html_title(l(:messenger_view_label_messenger)) -%>
