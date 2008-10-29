@@ -26,6 +26,13 @@ messenger_help_not_found: I'm sorry, I don't understand '%s'.  Maybe try typing 
 messenger_help_group_general: General
 
 messenger_help_group_issues: Issues
+
+messenger_command_issues_found: Found %d issues.
+messenger_command_issues_not_found: There is no issue with '%s' in name.
+messenger_command_issues_assigned_not_found: You haven't assigned any issue.
+messenger_command_issue_not_found: Issue can't be found.
+messenger_command_issue_status: "status: %s"
+messenger_command_issue_assigned_to: "assigned to: %s"
     
 messenger_help_group_timers: Timers    
 

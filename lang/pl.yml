@@ -27,6 +27,13 @@ messenger_help_group_general: Ogólne
 
 messenger_help_group_issues: Zagadnienia
     
+messenger_command_issues_found: Znaleziono %d zagadnień.
+messenger_command_issues_not_found: Nie ma zagadnienia z '%s' w nazwie.
+messenger_command_issues_assigned_not_found: Nie masz przypisanych żadnych zagadnień.
+messenger_command_issue_not_found: Nieznaleziono zagadnienia.
+messenger_command_issue_status: "status: %s"
+messenger_command_issue_assigned_to: "przypisane do: %s"
+    
 messenger_help_group_timers: Liczniki
 
 messenger_help_command_start_short: Uruchom licznik dla podanego zagadnienia.
