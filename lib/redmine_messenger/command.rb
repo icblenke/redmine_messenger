@@ -29,8 +29,12 @@ module RedmineMessenger
         elsif param.options[:greedy]
           params[param.name.to_sym] = param.value_to_type(tokens.join(" "))
           tokens = []
-        else
+        elsif param.value_to_type?(tokens[0])
           params[param.name.to_sym] = param.value_to_type(tokens.shift)
+        elsif not (param.value_to_type?(tokens[0]) and param.options[:required])
+          params[param.name.to_sym] = nil
+        else
+          return false
         end
       end
 
@@ -71,7 +75,10 @@ module RedmineMessenger
         unless @parameters.empty?
           params_names = []
           @parameters.each do |param|
-            params_names << param.name.to_s
+            name = param.name.to_s
+            name << "?" unless param.options[:required]
+            name << "*" if param.options[:greedy]
+            params_names << name
           end
           @command_to_string << " <" << params_names.join(",") << ">"
         end
@@ -94,6 +101,17 @@ module RedmineMessenger
       @options.merge!(options)      
     end
 
+    # Check if value has proper type.
+    def value_to_type?(value)
+      if @options[:type] == :integer
+        /\d+/ =~ value
+      elsif @options[:type] == :float
+        /\d+(\.\d+)?/ =~ value
+      else
+        true
+      end
+    end
+    
     # Get param value in proper type.
     def value_to_type(value)
       if @options[:type] == :integer
