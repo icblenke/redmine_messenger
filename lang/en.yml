@@ -45,7 +45,6 @@ messenger_help_command_pause_long: Pause your running timer.
 messenger_help_command_resume_long: Resume your paused timer.
 messenger_help_command_cancel_long: Cancel your running timer.
     
-messenger_command_timers_started: Timer for issue '%s' has been started.
 messenger_command_timers_issue_not_found: Issue can't be found.
 messenger_command_timers_resumed: Timer for issue '%s' has been resumed.
 messenger_command_timers_not_resumed: Timer for issue '%s' has been already running.
@@ -56,5 +55,9 @@ messenger_command_timers_finished: Timer for issue '%s' has been finished.
 messenger_command_timers_not_finished: Timer for issue '%s' can't be finished.
 messenger_command_timers_noted: Timer's note for issue '%s' has been added.
 messenger_command_timers_running: Timer for issue '%s' has been started.
-messenger_command_timers_running_status: Timer for issue '%s' has been started. You've spent on it %d minutes.
+messenger_command_timers_running_status: Timer for issue '%s' has been started. Running for %d minutes.
+messenger_command_timers_running_stats_time: "Hours logged for this issue: %.1f by you today, %.1f by you, %.1f by everyone."
+messenger_command_timers_running_stats_done_with_estimation: "%d%% of the work performed, remaining %.1f hours of %.1f estimated."
+messenger_command_timers_running_stats_done: "%d%% of the work performed. Time hasn't been estimated."
 messenger_command_timers_not_running: Timer hasn't been started.
+messenger_command_timers_not_running_for_that_issue: Timer for '%s' hasn't been started.

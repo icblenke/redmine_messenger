@@ -23,7 +23,7 @@ class UserMessenger < ActiveRecord::Base
     self.save!
   end
   
-  def timer_finish(note = nil)
+  def timer_finish(done_ratio = nil, note = nil)
     add_note_if_not_blank(note)
 
     entry = TimeEntry.new
@@ -31,9 +31,17 @@ class UserMessenger < ActiveRecord::Base
     entry.issue = self.issue
     entry.project = self.issue.project if self.issue.project_id
     entry.activity = Enumeration.find(:first, :conditions => {:opt => "ACTI"})
-    entry.spent_on = Time.now.strftime("%Y-%m-%d")
+    entry.spent_on = Time.now.to_date
     entry.comments = self.timer_note unless self.timer_note.blank?
-    entry.hours = Float(((Float(timer_to_minutes)/6).round))/10
+    entry.hours = timer_to_hours
+    
+    if done_ratio and done_ratio > 0
+      done_ratio = 100 if done_ratio > 100
+      self.issue.done_ratio = done_ratio
+      # TODO Change status to finished, set it in configuration
+      #self.issue.status = ? if done_ratio == 100
+      return false unless self.issue.save
+    end
     
     if entry.save
       timer_cancel
@@ -41,13 +49,23 @@ class UserMessenger < ActiveRecord::Base
     else
       false
     end   
-  end
+  end  
   
   def timer_to_minutes
     self.timer_time + time_distance_in_minutes(self.timer_start_time)
   end
   
+  def timer_to_hours
+    Float(((Float(timer_to_minutes)/6).round))/10
+  end
+  
+  
   def timer_start(issue, note = nil)
+    # TODO Change status to started, set it in configuration
+    #issue.status = ?
+    #return false unless self.issue.save
+    end
+
     add_note_if_not_blank(note)    
     self.timer_time = 0
     self.timer_start_time = Time.now

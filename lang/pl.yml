@@ -45,7 +45,6 @@ messenger_help_command_pause_long: Zatrzymaj aktywny licznik.
 messenger_help_command_resume_long: Włącz zatrzymany licznik.
 messenger_help_command_cancel_long: Anuluj aktywny licznik.
 
-messenger_command_timers_started: Licznik dla '%s' został uruchomiony.
 messenger_command_timers_issue_not_found: Nieznaleziono zagadnienia.
 messenger_command_timers_resumed: Licznik dla '%s' został uruchomiony.
 messenger_command_timers_not_resumed: Licznik dla '%s' był już uruchomiony.
@@ -57,4 +56,8 @@ messenger_command_timers_not_finished: Licznik dla '%s' nie został zakończony.
 messenger_command_timers_noted: Komentarz do licznika dla '%s' został dodany.
 messenger_command_timers_running: Licznik dla '%s' został uruchomiony.
 messenger_command_timers_running_status: Licznik dla '%s' został uruchomiony. Przepracowaneś już %d minut.
+messenger_command_timers_running_stats_time: "Godziny zaraportowane dzisiaj przez ciebie: %.1f, całościowo przez ciebie: %.1f, przez wszystkich %.1f."
+messenger_command_timers_running_stats_done_with_estimation: "Wykonano %d%% prac, pozostało %.1f godzin z %.1f oszacowanych."
+messenger_command_timers_running_stats_done: "Wykonano %d%% prac. Czas nie został oszacowano."
 messenger_command_timers_not_running: Licznik nie został uruchomiony.
+messenger_command_timers_not_running_for_that_issue: Licznik dla '%s' nie został uruchomiony.
