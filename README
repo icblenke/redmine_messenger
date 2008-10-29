@@ -35,6 +35,23 @@ Type 'help' and read what you can do with it.
 
 All user related help is on page http://your_redmine_domain/user_messenger.
 
+= Features
+
+* timers
+* logging times
+* searching for issues
+* details of issue
+* timer status with logged time statisticsOB
+
+= Planned features
+
+* commenting issues
+* reassigning issues
+* pausing/resuming timer when user become away/visible (configurable)
+* changing status of issue to 'in progress' while starting timer (configurable)
+* changing status of issue to 'finished' while finishing timer with ratio equalt to 100 (configurable)
+* jabber notification instead of mail ones (configurable)
+
 = Extending
 
 To extend functionality create file app/messenger/NAME_messenger.rb. See app/messenger/issues_messenger.rb for usage example.
