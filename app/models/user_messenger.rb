@@ -57,15 +57,13 @@ class UserMessenger < ActiveRecord::Base
   
   def timer_to_hours
     Float(((Float(timer_to_minutes)/6).round))/10
-  end
-  
+  end 
   
   def timer_start(issue, note = nil)
     # TODO Change status to started, set it in configuration
     #issue.status = ?
     #return false unless self.issue.save
-    end
-
+    
     add_note_if_not_blank(note)    
     self.timer_time = 0
     self.timer_start_time = Time.now
