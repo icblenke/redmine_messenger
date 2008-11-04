@@ -19,7 +19,7 @@ Redmine::Plugin.register :messenger do
   name 'Messenger'
   author 'Maciej Szczytowski'
   description 'Messenger is a plugin to allow users to communicate with Redmine via Instant Messenger.'
-  version '0.0.2'
+  version '0.0.3'
   
   menu :account_menu, :user_messenger, { :controller => 'user_messenger', :action => 'index' }, :caption => :messenger_menu_label, :after => :my_account, :if => Proc.new { User.current.logged? }
 end
