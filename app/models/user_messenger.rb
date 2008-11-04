@@ -41,8 +41,13 @@ class UserMessenger < ActiveRecord::Base
     if done_ratio and done_ratio > 0
       done_ratio = 100 if done_ratio > 100
       self.issue.done_ratio = done_ratio
-      # TODO Change status to finished, set it in configuration
-      #self.issue.status = ? if done_ratio == 100
+      
+      if done_ratio == 100 and not self.issue_status_when_finishing_timer_with_full_ratio.nil?
+        self.issue.status = self.issue_status_when_finishing_timer_with_full_ratio
+      elsif done_ratio < 100 and not self.issue_status_when_finishing_timer.nil?
+        self.issue.status = self.issue_status_when_finishing_timer
+      end
+
       return false unless self.issue.save
     end
     
@@ -63,9 +68,10 @@ class UserMessenger < ActiveRecord::Base
   end 
   
   def timer_start(issue, note = nil)
-    # TODO Change status to started, set it in configuration
-    #issue.status = ?
-    #return false unless self.issue.save
+    unless self.issue_status_when_starting_timer.nil?
+      issue.status = self.issue_status_when_starting_timer
+      return false unless issue.save
+    end
     
     add_note_if_not_blank(note)    
     self.timer_paused_because_of_status_change = false
