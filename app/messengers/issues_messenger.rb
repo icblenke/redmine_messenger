@@ -5,6 +5,11 @@ class IssuesMessenger < RedmineMessenger::Base
     cmd.param :name, :type => :string, :required => false, :greedy => true
   end
   
+  register_handler :all_issues do |cmd|
+    cmd.group :issues
+    cmd.param :name, :type => :string, :required => false, :greedy => true
+  end
+  
   register_handler :issue do |cmd|
     cmd.group :issues
     cmd.param :issue_id, :type => :integer, :required => true   
@@ -16,13 +21,12 @@ class IssuesMessenger < RedmineMessenger::Base
     cmd.param :note, :type => :string, :greedy => true, :required => true
   end
 
-  def issues(user, params = {})
-    # TODO don't show finished issues    
+  def issues(user, params = {})  
     unless params[:name].blank?
-      issues = Issue.find(:all, :conditions => ["lower(subject) like lower(?)", "%#{params[:name]}%"])
+      issues = Issue.find(:all, :include => [:status], :conditions => ["lower(issues.subject) like lower(?) and issue_statuses.is_closed = ?", "%#{params[:name]}%", false])
       return l(:messenger_command_issues_not_found, params[:name]) if issues.empty?
     else
-      issues = Issue.find_all_by_assigned_to_id(user.user_id)
+      issues = Issue.find(:all, :include => [:status], :conditions => ["issues.assigned_to_id = ? and issue_statuses.is_closed = ?", user.user_id, false])
       return l(:messenger_command_issues_assigned_not_found) if issues.empty?
     end
     
@@ -47,7 +51,7 @@ class IssuesMessenger < RedmineMessenger::Base
   end
   
   def issue(user, params = {})
-    if issue = Issue.find_by_id(params[:issue_id]) 
+    if issue = Issue.find_by_id(params[:issue_id])
       responce = "#{issue.project.name.humanize}: \##{issue.id} #{issue.subject} (" << l(:messenger_command_issue_status, issue.status.name.downcase)
       responce << ", " << l(:messenger_command_issue_assigned_to, issue.assigned_to.login.to_s) if issue.assigned_to
       responce << ")"
