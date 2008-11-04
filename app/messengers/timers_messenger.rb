@@ -36,6 +36,23 @@ class IssuesMessenger < RedmineMessenger::Base
     cmd.param :note, :type => :string, :greedy => true, :required => false
   end
 
+  register_status_handler :status_available, :available
+  register_status_handler :status_unavailable, :unavailable
+    
+  def status_available(user, status)
+    if user.resume_when_become_online? and user.timer_running? and user.timer_paused_because_of_status_change?
+      user.timer_resume
+      l(:messenger_command_timers_resumed_because_of_status_change, user.issue.subject)
+    end
+  end
+  
+  def status_unavailable(user, status)
+    if user.pause_when_become_offline_or_away? and user.timer_running? and not user.timer_paused?
+      user.timer_pause(nil, true)
+      l(:messenger_command_timers_paused_because_of_status_change, user.issue.subject)
+    end
+  end
+  
   def start(user, params = {})
     if issue = Issue.find_by_id(params[:issue_id])          
       if user.timer_running?
@@ -77,7 +94,12 @@ class IssuesMessenger < RedmineMessenger::Base
         user.timer_pause(params[:note])
         l(:messenger_command_timers_paused, user.issue.subject)
       else
-        l(:messenger_command_timers_not_paused, user.issue.subject)
+        if user.timer_paused_because_of_status_change?
+          user.timer_pause(params[:note])
+          l(:messenger_command_timers_paused, user.issue.subject)
+        else
+          l(:messenger_command_timers_not_paused, user.issue.subject)
+        end
       end
     else
       l(:messenger_command_timers_not_running) 
@@ -128,7 +150,11 @@ class IssuesMessenger < RedmineMessenger::Base
     else
       if user.timer_running?
         stats = stats_for_issue(user.issue, user.user_id, user.timer_to_hours)
-        responce = l(:messenger_command_timers_running_status, user.issue.subject, user.timer_to_minutes) << "\n" 
+        if user.timer_paused?
+          responce = l(:messenger_command_timers_paused_status, user.issue.subject) << "\n" 
+        else
+          responce = l(:messenger_command_timers_running_status, user.issue.subject, user.timer_to_minutes) << "\n" 
+        end
         responce << status_for_issue(stats)
         responce
       else

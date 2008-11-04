@@ -27,7 +27,7 @@ module RedmineMessenger
           messenger_id, new_status = parameters
           
           if user = UserMessenger.find_by_messenger_id(messenger_id) and user.verified?     
-            responce = instance.send($1.to_sym, user, new_status)            
+            responce = instance.send($1.to_sym, user, new_status)                        
             Messenger.send_message(messenger_id, responce) if responce
           end          
         elsif /^receive_([_a-z]\w*)/ =~ method.id2name

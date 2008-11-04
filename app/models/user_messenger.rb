@@ -68,6 +68,7 @@ class UserMessenger < ActiveRecord::Base
     #return false unless self.issue.save
     
     add_note_if_not_blank(note)    
+    self.timer_paused_because_of_status_change = false
     self.timer_time = 0
     self.timer_start_time = Time.now
     self.issue = issue
@@ -76,12 +77,14 @@ class UserMessenger < ActiveRecord::Base
   
   def timer_resume(note = nil)
     add_note_if_not_blank(note)    
+    self.timer_paused_because_of_status_change = false
     self.timer_start_time = Time.now
     self.save!
   end
   
-  def timer_pause(note = nil)
+  def timer_pause(note = nil, because_of_status = false)
     add_note_if_not_blank(note)    
+    self.timer_paused_because_of_status_change = because_of_status
     self.timer_time ||= 0
     self.timer_time += time_distance_in_minutes(self.timer_start_time)
     self.timer_start_time = nil
@@ -89,6 +92,7 @@ class UserMessenger < ActiveRecord::Base
   end
   
   def timer_cancel
+    self.timer_paused_because_of_status_change = false
     self.timer_note = nil
     self.timer_start_time = nil
     self.timer_time = nil
