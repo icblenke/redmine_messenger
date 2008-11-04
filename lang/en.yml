@@ -7,7 +7,16 @@ messenger_controller_notice_updated: Messenger configuration was successfully up
 messenger_controller_notice_updated_with_code: Messenger configuration was successfully updated. Please verify your messenger account with code is %s.
 
 field_messenger: Messenger ID
-
+field_resume_when_become_online: Resume timer when become online
+field_pause_when_become_offline_or_away: Resume timer when become offline/away
+field_issue_status_when_starting_timer: Status when starting timer
+field_issue_status_when_finishing_timer: Status when finishing timer
+field_issue_status_when_finishing_timer_with_full_ratio: Status when finishing timer with ratio 100%%
+field_messenger_notifications_instead_of_emails: Send messenger notifications instead of emails
+field_assigning_issue_when_starting_timer: Assigning issue when starting timer
+      
+messenger_options_statuses_dont_change: don't change      
+      
 messenger_error_param_missing: Param missing, see 'help %s' for more information.
 
 messenger_verify_user_verified: Succesful verification. Welcome aboard!

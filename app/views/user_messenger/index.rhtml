@@ -8,7 +8,14 @@
   <div class="splitcontentleft">
       <h3><%=l(:messenger_view_label_configuration)%></h3>
       <div class="box tabular">
-          <p><%= f.text_field :messenger_id %></p>
+          <p><%= f.text_field :messenger_id %></p>          
+          <p><%= f.select :issue_status_when_starting_timer_id, issue_status_to_select %></p>
+          <p><%= f.select :issue_status_when_finishing_timer_id, issue_status_to_select %></p>
+          <p><%= f.select :issue_status_when_finishing_timer_with_full_ratio_id, issue_status_to_select %></p>
+          <p><%= f.check_box :resume_when_become_online %></p>
+          <p><%= f.check_box :pause_when_become_offline_or_away %></p>
+          <p><%= f.check_box :messenger_notifications_instead_of_emails %></p>
+          <p><%= f.check_box :assigning_issue_when_starting_timer %></p>
       </div>
       <%= submit_tag l(:button_save) %>
   </div>

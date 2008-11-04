@@ -4,7 +4,10 @@ class UserMessenger < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :issue
-  
+  belongs_to :issue_status_when_starting_timer, :class_name => "IssueStatus", :foreign_key => "issue_status_when_starting_timer_id"
+  belongs_to :issue_status_when_finishing_timer, :class_name => "IssueStatus", :foreign_key => "issue_status_when_finishing_timer_id"
+  belongs_to :issue_status_when_finishing_timer_with_full_ratio, :class_name => "IssueStatus", :foreign_key => "issue_status_when_finishing_timer_with_full_ratio_id"
+
   # Returns false if this user hasn't been verified yet -- that is, a verification code is not nil.
   def verified?
     verification_code.nil?

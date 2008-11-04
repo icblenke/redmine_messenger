@@ -7,6 +7,15 @@ messenger_controller_notice_updated: Konfiguracja została zapisana.
 messenger_controller_notice_updated_with_code: Konfiguracja została zapisana. Zweryfikuj swoje konto za pomocą kodu %s.
 
 field_messenger: Komunikator
+field_resume_when_become_online: Uruchom licznik jeśli status zmienił się na 'dostępny'
+field_pause_when_become_offline_or_away: Zatrzymaj licznik jeśli status zmienił się na 'niedostępny'
+field_issue_status_when_starting_timer: Zmień status jeśli licznik został włączony
+field_issue_status_when_finishing_timer: Zmień status jeśli licznik został wyłączony
+field_issue_status_when_finishing_timer_with_full_ratio: Zmień status jeśli licznik został wyłączony i ratio wynosi 100%%
+field_messenger_notifications_instead_of_emails: Wysyłaj powiadomienia komunikatorem, zamist mailem
+field_assigning_issue_when_starting_timer: Przypisz zagadnienie jeśli licznik został uruchomiony
+      
+messenger_options_statuses_dont_change: nie zmieniaj
 
 messenger_error_param_missing: Brakujący parametr, zobacz 'help %s' aby uzyskać więcej informacji.
 
