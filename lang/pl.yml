@@ -42,7 +42,9 @@ messenger_command_issues_assigned_not_found: Nie masz przypisanych żadnych zaga
 messenger_command_issue_not_found: Nieznaleziono zagadnienia.
 messenger_command_issue_status: "status: %s"
 messenger_command_issue_assigned_to: "przypisane do: %s"
-    
+messenger_command_comment_commented: Komentarz został dodany.
+messenger_command_comment_not_commented: Komentarz nie został dodany.
+
 messenger_help_group_timers: Liczniki
 
 messenger_help_command_start_short: Uruchom licznik dla podanego zagadnienia.

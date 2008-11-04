@@ -42,7 +42,9 @@ messenger_command_issues_assigned_not_found: You haven't assigned any issue.
 messenger_command_issue_not_found: Issue can't be found.
 messenger_command_issue_status: "status: %s"
 messenger_command_issue_assigned_to: "assigned to: %s"
-    
+messenger_command_comment_commented: Comment has been added.
+messenger_command_comment_not_commented: Comment hasn't been added.
+
 messenger_help_group_timers: Timers    
 
 messenger_help_command_start_short: Start timer for given issue.

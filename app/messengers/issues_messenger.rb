@@ -9,6 +9,12 @@ class IssuesMessenger < RedmineMessenger::Base
     cmd.group :issues
     cmd.param :issue_id, :type => :integer, :required => true   
   end
+  
+  register_handler :comment do |cmd|
+    cmd.group :issues
+    cmd.param :issue_id, :type => :integer, :required => true
+    cmd.param :note, :type => :string, :greedy => true, :required => true
+  end
 
   def issues(user, params = {})
     # TODO don't show finished issues    
@@ -47,6 +53,21 @@ class IssuesMessenger < RedmineMessenger::Base
       responce << ")"
       responce << "\n\n" << issue.description if issue.description and issue.description.size > 1
       responce
+    else
+      l(:messenger_command_issue_not_found)
+    end
+  end
+  
+  def comment(user, params = {})
+    if issue = Issue.find_by_id(params[:issue_id]) 
+      journal = issue.init_journal(user.user, params[:note])
+      
+      if journal.save
+        Mailer.deliver_issue_edit(journal) if Setting.notified_events.include?('issue_updated')
+        l(:messenger_command_comment_commented)
+      else 
+        l(:messenger_command_comment_not_commented)
+      end
     else
       l(:messenger_command_issue_not_found)
     end
