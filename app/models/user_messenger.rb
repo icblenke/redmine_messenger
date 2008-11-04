@@ -43,8 +43,10 @@ class UserMessenger < ActiveRecord::Base
       self.issue.done_ratio = done_ratio
       
       if done_ratio == 100 and not self.issue_status_when_finishing_timer_with_full_ratio.nil?
+        # set issue status when ratio = 100
         self.issue.status = self.issue_status_when_finishing_timer_with_full_ratio
       elsif done_ratio < 100 and not self.issue_status_when_finishing_timer.nil?
+        # set issue status
         self.issue.status = self.issue_status_when_finishing_timer
       end
 
@@ -68,8 +70,17 @@ class UserMessenger < ActiveRecord::Base
   end 
   
   def timer_start(issue, note = nil)
+    if self.assigning_issue_when_starting_timer? and issue.assigned_to != self.user
+      # assing issue to current user
+      issue.assigned_to = self.user
+    end
+    
     unless self.issue_status_when_starting_timer.nil?
+      # set issue status
       issue.status = self.issue_status_when_starting_timer
+    end
+    
+    if issue.changed?
       return false unless issue.save
     end
     
