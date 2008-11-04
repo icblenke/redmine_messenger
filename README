@@ -52,6 +52,10 @@ All user related help is on page http://your_redmine_domain/user_messenger.
 * reassigning issues
 * jabber notification instead of mail ones (configurable)
 
+= Issues
+
+See http://mszczytowski.lighthouseapp.com/projects/19134-redmine_messenger/
+
 = Extending
 
 To extend functionality create file app/messenger/NAME_messenger.rb. See app/messenger/issues_messenger.rb for usage example.
