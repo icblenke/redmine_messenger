@@ -3,6 +3,7 @@ require 'redmine'
 require 'rubygems'
 require 'yaml'
 require 'xmpp4r'
+require 'xmpp4r/roster/helper/roster'
 
 require_dependency 'redmine_messenger/messenger'
 require_dependency 'redmine_messenger/messengers/mock_messenger'

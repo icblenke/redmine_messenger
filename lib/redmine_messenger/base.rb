@@ -23,6 +23,13 @@ module RedmineMessenger
         if /^deliver_([_a-z]\w*)/ =~ method.id2name
           message = instance.send($1, parameters)          
           Messenger.send_message(message[0], message[1]) if message
+        elsif /^status_([_a-z]\w*)/ =~ method.id2name
+          messenger_id, new_status = parameters
+          
+          if user = UserMessenger.find_by_messenger_id(messenger_id) and user.verified?     
+            responce = instance.send($1.to_sym, user, new_status)            
+            Messenger.send_message(messenger_id, responce) if responce
+          end          
         elsif /^receive_([_a-z]\w*)/ =~ method.id2name
           messenger_id, message_body = parameters
 
@@ -35,7 +42,8 @@ module RedmineMessenger
                   base_instance.param_missing(messenger_id, $1)
                 else
                   # Calling handler.
-                  Messenger.send_message(messenger_id, instance.send(command.method, user, params))
+                  responce = instance.send(command.method, user, params)
+                  Messenger.send_message(messenger_id, responce) if responce
                 end
               else
                 # Command not found, show help.
@@ -56,12 +64,17 @@ module RedmineMessenger
         "#{e.message}\n#{e.backtrace.join("\n")}"
       end
 
-      # Register handler (see <tt>Command</tt>).
+      # Register message handler (see <tt>Command</tt>).
       def register_handler(command, options = {})
         cmd = Command.new(command, options)
         yield(cmd) if block_given?
         Base.commands[cmd.command] = cmd
-        Messenger.register_handler(instance.class, "receive_#{cmd.method.to_s}", cmd.options)
+        Messenger.register_message_handler(instance.class, "receive_#{cmd.method.to_s}", cmd.options)
+      end
+      
+      # Register status handler.
+      def register_status_handler(command, status = :all)
+        Messenger.register_status_handler(instance.class, "status_#{command.to_s}", status)
       end
       
       # Returns help for given command or all help if command doesn't exists.
