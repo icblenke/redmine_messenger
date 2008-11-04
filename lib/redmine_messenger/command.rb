@@ -77,7 +77,7 @@ module RedmineMessenger
           @parameters.each do |param|
             name = param.name.to_s
             name << "?" unless param.options[:required]
-            name << "*" if param.options[:greedy]
+            #name << "*" if param.options[:greedy]
             params_names << name
           end
           @command_to_string << " <" << params_names.join(",") << ">"
