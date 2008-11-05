@@ -129,7 +129,10 @@ class UserMessenger < ActiveRecord::Base
  
   # Set new verification code if messenger_id has been changed.
   def before_save
-    self.verification_code = rand(999999).to_s.center(6, rand(5).to_s) if self.messenger_id_changed?
+    if self.messenger_id_changed?
+      self.verification_code = rand(999999).to_s.center(6, rand(5).to_s)
+      RedmineMessenger::Messenger.send_message(self.messenger_id, l(:messenger_welcome_message))
+    end
     true
   end  
   

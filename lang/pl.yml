@@ -15,6 +15,8 @@ field_issue_status_when_finishing_timer_with_full_ratio: Zmień status jeśli li
 field_messenger_notifications_instead_of_emails: Wysyłaj powiadomienia komunikatorem, zamist mailem
 field_assigning_issue_when_starting_timer: Przypisz zagadnienie jeśli licznik został uruchomiony
       
+messenger_welcome_message: Twój JID został zarejestrowany Redmine Messenger. Dodaj ten kontakt do swojej listy i wyślij swój kod weryfikacyjny.
+      
 messenger_options_statuses_dont_change: nie zmieniaj
 
 messenger_error_param_missing: Brakujący parametr, zobacz 'help %s' aby uzyskać więcej informacji.
