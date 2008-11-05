@@ -46,10 +46,10 @@ All user related help is on page http://your_redmine_domain/user_messenger.
 * pausing/resuming timer when user become away/visible (configurable)
 * changing status of issue to 'in progress' while starting timer (configurable)
 * changing status of issue to 'finished' while finishing timer with ratio equalt to 100 (configurable)
+* assigning issues
 
 = Planned features
 
-* reassigning issues
 * jabber notification instead of mail ones (configurable)
 
 = Issues
