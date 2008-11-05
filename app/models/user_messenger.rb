@@ -13,6 +13,14 @@ class UserMessenger < ActiveRecord::Base
     verification_code.nil?
   end
   
+  def language
+    unless self.user.language.blank?
+      self.user.language
+    else
+      Setting['default_language']
+    end    
+  end
+  
   # Verify user. Returns true if user had been verified before or given code matches to verification code.
   def verify(code)
     return true unless self.verification_code
@@ -131,7 +139,7 @@ class UserMessenger < ActiveRecord::Base
   def before_save
     if self.messenger_id_changed?
       self.verification_code = rand(999999).to_s.center(6, rand(5).to_s)
-      RedmineMessenger::Messenger.send_message(self.messenger_id, l(:messenger_welcome_message))
+      RedmineMessenger::Messenger.send_message(self.messenger_id, ll(language, :messenger_welcome_message))
     end
     true
   end  

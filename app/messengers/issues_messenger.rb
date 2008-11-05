@@ -28,13 +28,13 @@ class IssuesMessenger < RedmineMessenger::Base
     cmd.param :note, :type => :string, :greedy => true, :required => false
   end
 
-  def issues(user, params = {})  
+  def issues(messenger, params = {})
     unless params[:name].blank?
       issues = Issue.find(:all, :include => [:status], :conditions => ["lower(issues.subject) like lower(?) and issue_statuses.is_closed = ?", "%#{params[:name]}%", false])
-      return l(:messenger_command_issues_not_found, params[:name]) if issues.empty?
+      return ll(messenger.language, :messenger_command_issues_not_found, params[:name]) if issues.empty?
     else
-      issues = Issue.find(:all, :include => [:status], :conditions => ["issues.assigned_to_id = ? and issue_statuses.is_closed = ?", user.user_id, false])
-      return l(:messenger_command_issues_assigned_not_found) if issues.empty?
+      issues = Issue.find(:all, :include => [:status], :conditions => ["issues.assigned_to_id = ? and issue_statuses.is_closed = ?", messenger.user_id, false])
+      return ll(messenger.language, :messenger_command_issues_assigned_not_found) if issues.empty?
     end
     
     projects = {}
@@ -44,7 +44,7 @@ class IssuesMessenger < RedmineMessenger::Base
       projects[issue.project.name] << issue
     end
     
-    responce = l(:messenger_command_issues_found, issues.length) << "\n\n"
+    responce = ll(messenger.language, :messenger_command_issues_found, issues.length) << "\n\n"
     
     projects.each do |project, issues|
       responce << project.humanize << ":\n"
@@ -57,66 +57,66 @@ class IssuesMessenger < RedmineMessenger::Base
     responce        
   end
   
-  def issue(user, params = {})
+  def issue(messenger, params = {})
     if issue = Issue.find_by_id(params[:issue_id])
-      responce = "#{issue.project.name.humanize}: \##{issue.id} #{issue.subject} (" << l(:messenger_command_issue_status, issue.status.name.downcase)
-      responce << ", " << l(:messenger_command_issue_assigned_to, issue.assigned_to.login.to_s) if issue.assigned_to
+      responce = "#{issue.project.name.humanize}: \##{issue.id} #{issue.subject} (" << ll(messenger.language, :messenger_command_issue_status, issue.status.name.downcase)
+      responce << ", " << ll(messenger.language, :messenger_command_issue_assigned_to, issue.assigned_to.login.to_s) if issue.assigned_to
       responce << ")"
       responce << "\n\n" << issue.description if issue.description and issue.description.size > 1
       responce
     else
-      l(:messenger_command_issue_not_found)
+      ll(messenger.language, :messenger_command_issue_not_found)
     end
   end
   
-  def assign(user, params = {})
+  def assign(messenger, params = {})
     if issue = Issue.find_by_id(params[:issue_id]) 
-      return l(:messenger_command_issue_not_assigned_to_you) unless issue.assigned_to == user.user      
+      return ll(messenger.language, :messenger_command_issue_not_assigned_to_you) unless issue.assigned_to == messenger.user
       
       user_assing_to = User.find_by_login(params[:user])
       
       unless user_assing_to
-        return l(:messenger_command_assing_user_not_found, params[:user])
+        return ll(messenger.language, :messenger_command_assing_user_not_found, params[:user])
       end
       
-      return l(:messenger_command_assing_already_assigned, user_assing_to.login) if user_assing_to == user.user
+      return ll(messenger.language, :messenger_command_assing_already_assigned, user_assing_to.login) if user_assing_to == messenger.user
       
       unless params[:note].blank?
-        unless journal(user.user, issue, params[:note])
-          return l(:messenger_command_comment_not_commented)
+        unless journal(messenger.user, issue, params[:note])
+          return ll(messenger.language, :messenger_command_comment_not_commented)
         end
       end
       
       issue.assigned_to = user_assing_to
       
       if issue.save
-        l(:messenger_command_assing_assigned, user_assing_to.login)
+        ll(messenger.language, :messenger_command_assing_assigned, user_assing_to.login)
       else
-        l(:messenger_command_assing_not_assigned, user_assing_to.login)
+        ll(messenger.language, :messenger_command_assing_not_assigned, user_assing_to.login)
       end
     else
-      l(:messenger_command_issue_not_found)
+      ll(messenger.language, :messenger_command_issue_not_found)
     end
   end
   
-  def comment(user, params = {})
+  def comment(messenger, params = {})
     if issue = Issue.find_by_id(params[:issue_id]) 
-      return l(:messenger_command_issue_not_assigned_to_you) unless issue.assigned_to == user.user
+      return ll(messenger.language, :messenger_command_issue_not_assigned_to_you) unless issue.assigned_to == messenger.user
       
-      if journal(user.user, issue, params[:note])
-        l(:messenger_command_comment_commented)
+      if journal(messenger.user, issue, params[:note])
+        ll(messenger.language, :messenger_command_comment_commented)
       else 
-        l(:messenger_command_comment_not_commented)
+        ll(messenger.language, :messenger_command_comment_not_commented)
       end
     else
-      l(:messenger_command_issue_not_found)
+      ll(messenger.language, :messenger_command_issue_not_found)
     end
   end
   
   private
   
-  def journal(user, issue, notes)
-    journal = issue.init_journal(user, notes)
+  def journal(messenger, issue, notes)
+    journal = issue.init_journal(messenger, notes)
 
     if journal.save
       Mailer.deliver_issue_edit(journal) if Setting.notified_events.include?('issue_updated')
