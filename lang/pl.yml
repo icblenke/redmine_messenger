@@ -38,6 +38,7 @@ messenger_help_group_general: Ogólne
 
 messenger_help_group_issues: Zagadnienia
     
+messenger_command_issue_not_assigned_to_you: Nie można wykonać operacji, ponieważ zagadnienie nie należy do ciebie.
 messenger_command_issues_found: Znaleziono %d zagadnień.
 messenger_command_issues_not_found: Nie ma zagadnienia z '%s' w nazwie.
 messenger_command_issues_assigned_not_found: Nie masz przypisanych żadnych zagadnień.
@@ -46,6 +47,10 @@ messenger_command_issue_status: "status: %s"
 messenger_command_issue_assigned_to: "przypisane do: %s"
 messenger_command_comment_commented: Komentarz został dodany.
 messenger_command_comment_not_commented: Komentarz nie został dodany.
+messenger_command_assing_user_not_found: Użytkownik z loginem '%s' nie istnieje.
+messenger_command_assing_assigned: Zagadnienie zostało przypisane do użytkownika '%s'.
+messenger_command_assing_not_assigned: Zagadnienie nie zostało przypisane do użytkownika '%s'.
+messenger_command_assing_already_assigned: Zagadnienie jest już przypisane do użytkownika '%s'.
 
 messenger_help_group_timers: Liczniki
 
