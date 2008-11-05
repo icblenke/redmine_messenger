@@ -7,12 +7,19 @@ module RedmineMessenger
         
         jid = config['jid']
         jid += '/Redmine' unless jid =~ /\//
-        
+
         @client = Jabber::Client.new(Jabber::JID.new(jid))
-        @client.connect(config['host'],config['port'])
-        @client.auth(config['password'])
-        @client.send(Jabber::Presence.new(:chat, config['message']))
-      
+        
+        RAILS_DEFAULT_LOGGER.info "CONNECTING"
+        
+        connect
+
+        @client.on_exception do |e,client,where|
+          RAILS_DEFAULT_LOGGER.fatal "RedmineMessenger: exception catched '#{e.message}' (#{where.to_s}; trying to reconnect ..."
+          sleep 5
+          reconnect
+        end
+        
         @client.add_message_callback do |m|
           unless m.type == :error
             receive_message("#{m.from.node}@#{m.from.domain}", m.body)
@@ -40,15 +47,24 @@ module RedmineMessenger
         @client.send(Jabber::Message.new(to, body).set_type(:chat))
       end
 
-      def destroy
-        if @client
-          @rooster = nil
-          @client.close
-          @client = nil          
+      private 
+
+      def reconnect
+        if @client.is_connected?
+          RAILS_DEFAULT_LOGGER.info "RedmineMessenger: disconnecting"
+          @client.close          
+        end        
+        connect        
+      end
+      
+      def connect
+        unless @client.is_connected?
+          RAILS_DEFAULT_LOGGER.info "RedmineMessenger: connecting"
+          @client.connect(config['host'],config['port'])
+          @client.auth(config['password'])
+          @client.send(Jabber::Presence.new(:chat, config['message']))
         end
       end
-
-      private 
       
       def status(priority, type, show)
         if priority.nil? or type == :unavailable or show == :away or show == :xa
