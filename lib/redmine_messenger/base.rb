@@ -145,7 +145,7 @@ module RedmineMessenger
 
     # Send 'param missing' message.
     def param_missing(messenger, command)
-      Messenger.send_message(messenger.messenger_id, ll(messenger.language, messenger_error_param_missing, command))
+      Messenger.send_message(messenger.messenger_id, ll(messenger.language, :messenger_error_param_missing, command))
     end
     
     # Verify user and send proper message.
