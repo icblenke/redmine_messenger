@@ -10,6 +10,8 @@ require_dependency 'redmine_messenger/messengers/mock_messenger'
 require_dependency 'redmine_messenger/messengers/xmpp4r_messenger'
 require_dependency 'redmine_messenger/base'
 require_dependency 'redmine_messenger/command'
+require_dependency 'app/models/mailer'
+require_dependency 'redmine_messenger/mailer'
 
 Dir[File.join(File.dirname(__FILE__), "app/messengers/*.rb")].each do |file|
   require_dependency file
