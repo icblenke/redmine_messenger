@@ -51,6 +51,8 @@ messenger_command_assing_user_not_found: User with login '%s' doesn't exist.
 messenger_command_assing_assigned: Issue has been assigned to '%s'.
 messenger_command_assing_not_assigned: Issue hasn't been assigned to '%s'.
 messenger_command_assing_already_assigned: Issue is already assigned to '%s'.
+messenger_command_assing_not_assignable_user: Issue cannot be assignet to user '%s'.
+messenger_command_issue_not_assignable_user: Operation not permitted, because you don't have proper rights.
 
 messenger_help_group_timers: Timers    
 

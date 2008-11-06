@@ -51,7 +51,9 @@ messenger_command_assing_user_not_found: Użytkownik z loginem '%s' nie istnieje
 messenger_command_assing_assigned: Zagadnienie zostało przypisane do użytkownika '%s'.
 messenger_command_assing_not_assigned: Zagadnienie nie zostało przypisane do użytkownika '%s'.
 messenger_command_assing_already_assigned: Zagadnienie jest już przypisane do użytkownika '%s'.
-
+messenger_command_assing_not_assignable_user: Nie można przypisać zagadnienia do użytkownika '%s'.
+messenger_command_issue_not_assignable_user: Nie można wykonać operacji, ponieważ nie masz odpowiednich uprawnień.
+    
 messenger_help_group_timers: Liczniki
 
 messenger_help_command_start_short: Uruchom licznik dla podanego zagadnienia.

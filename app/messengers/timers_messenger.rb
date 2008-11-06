@@ -54,7 +54,8 @@ class IssuesMessenger < RedmineMessenger::Base
   end
   
   def start(messenger, params = {})
-    if issue = Issue.find_by_id(params[:issue_id])          
+    if issue = Issue.find_by_id(params[:issue_id])    
+      return ll(messenger.language, :messenger_command_issue_not_assignable_user) unless issue.assignable_users.include?(messenger.user)
       if messenger.timer_running?
         if issue != messenger.issue
           messenger.timer_finish
@@ -140,6 +141,7 @@ class IssuesMessenger < RedmineMessenger::Base
   def status(messenger, params = {})
     if params[:issue_id] and params[:issue_id] > 0 and messenger.issue_id != params[:issue_id]
       if issue = Issue.find_by_id(params[:issue_id])
+        return ll(messenger.language, :messenger_command_issue_not_assignable_user) unless issue.assignable_users.include?(messenger.user)
         stats = stats_for_issue(issue, messenger.user_id)
         responce = ll(messenger.language, :messenger_command_timers_not_running_for_that_issue, issue.subject) << "\n"
         responce << status_for_issue(messenger, stats)

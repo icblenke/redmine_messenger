@@ -59,6 +59,7 @@ class IssuesMessenger < RedmineMessenger::Base
   
   def issue(messenger, params = {})
     if issue = Issue.find_by_id(params[:issue_id])
+      return ll(messenger.language, :messenger_command_issue_not_assignable_user) unless issue.assignable_users.include?(messenger.user)
       responce = "#{issue.project.name.humanize}: \##{issue.id} #{issue.subject} (" << ll(messenger.language, :messenger_command_issue_status, issue.status.name.downcase)
       responce << ", " << ll(messenger.language, :messenger_command_issue_assigned_to, issue.assigned_to.login.to_s) if issue.assigned_to
       responce << ")"
@@ -71,7 +72,7 @@ class IssuesMessenger < RedmineMessenger::Base
   
   def assign(messenger, params = {})
     if issue = Issue.find_by_id(params[:issue_id]) 
-      return ll(messenger.language, :messenger_command_issue_not_assigned_to_you) unless issue.assigned_to == messenger.user
+      return ll(messenger.language, :messenger_command_issue_not_assigned_to_you) unless issue.assigned_to == messenger.user      
       
       user_assing_to = User.find_by_login(params[:user])
       
@@ -79,6 +80,7 @@ class IssuesMessenger < RedmineMessenger::Base
         return ll(messenger.language, :messenger_command_assing_user_not_found, params[:user])
       end
       
+      return ll(messenger.language, :messenger_command_assing_not_assignable_user, user_assing_to.login) unless issue.assignable_users.include?(user_assing_to)
       return ll(messenger.language, :messenger_command_assing_already_assigned, user_assing_to.login) if user_assing_to == messenger.user
       
       unless params[:note].blank?
@@ -101,7 +103,8 @@ class IssuesMessenger < RedmineMessenger::Base
   
   def comment(messenger, params = {})
     if issue = Issue.find_by_id(params[:issue_id]) 
-      return ll(messenger.language, :messenger_command_issue_not_assigned_to_you) unless issue.assigned_to == messenger.user
+      return ll(messenger.language, :messenger_command_issue_not_assignable_user) unless issue.assignable_users.include?(messenger.user)
+      #return ll(messenger.language, :messenger_command_issue_not_assigned_to_you) unless issue.assigned_to == messenger.user
       
       if journal(messenger.user, issue, params[:note])
         ll(messenger.language, :messenger_command_comment_commented)
