@@ -20,7 +20,7 @@ class UserMessengerController < ApplicationController
       @user_messenger.issue_status_when_starting_timer_id = params[:user_messenger][:issue_status_when_starting_timer_id]
       @user_messenger.issue_status_when_finishing_timer_with_full_ratio_id = params[:user_messenger][:issue_status_when_finishing_timer_with_full_ratio_id]
       @user_messenger.issue_status_when_finishing_timer_id = params[:user_messenger][:issue_status_when_finishing_timer_id]
-      @user_messenger.messenger_notifications_instead_of_emails = params[:user_messenger][:messenger_notifications_instead_of_emails]
+      @user_messenger.messenger_notifications = params[:user_messenger][:messenger_notifications]
       @user_messenger.assigning_issue_when_starting_timer = params[:user_messenger][:assigning_issue_when_starting_timer]
       if @user_messenger.save
         if @user_messenger.verification_code

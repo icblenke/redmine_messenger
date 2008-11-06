@@ -14,7 +14,7 @@
           <p><%= f.select :issue_status_when_finishing_timer_with_full_ratio_id, issue_status_to_select %></p>
           <p><%= f.check_box :resume_when_become_online %></p>
           <p><%= f.check_box :pause_when_become_offline_or_away %></p>
-          <p><%= f.check_box :messenger_notifications_instead_of_emails %></p>
+          <p><%= f.select :messenger_notifications, notification_to_select %></p>
           <p><%= f.check_box :assigning_issue_when_starting_timer %></p>
       </div>
       <%= submit_tag l(:button_save) %>

@@ -12,7 +12,11 @@ field_pause_when_become_offline_or_away: Zatrzymaj licznik jeśli status zmieni�
 field_issue_status_when_starting_timer: Zmień status jeśli licznik został włączony
 field_issue_status_when_finishing_timer: Zmień status jeśli licznik został wyłączony
 field_issue_status_when_finishing_timer_with_full_ratio: Zmień status jeśli licznik został wyłączony i ratio wynosi 100%%
-field_messenger_notifications_instead_of_emails: Wysyłaj powiadomienia komunikatorem, zamist mailem
+field_messenger_notifications: Powiadomienia z systemu
+field_messenger_notifications_mail: tylko mailem
+field_messenger_notifications_mail_messenger_title: mailem i tytuł komunikatorem
+field_messenger_notifications_mail_messenger_full: mailem i komunikatorem
+field_messenger_notifications_messenger_full: tylko komunikatorem
 field_assigning_issue_when_starting_timer: Przypisz zagadnienie jeśli licznik został uruchomiony
       
 messenger_welcome_message: Twój JID został zarejestrowany Redmine Messenger. Dodaj ten kontakt do swojej listy i wyślij swój kod weryfikacyjny.

@@ -1,16 +1,31 @@
 class UserMessenger < ActiveRecord::Base
 
-  validates_presence_of :messenger_id
-
+  NOTIFICATION = %w( mail mail_messenger_title mail_messenger_full messenger_full )
+  
   belongs_to :user
   belongs_to :issue
   belongs_to :issue_status_when_starting_timer, :class_name => "IssueStatus", :foreign_key => "issue_status_when_starting_timer_id"
   belongs_to :issue_status_when_finishing_timer, :class_name => "IssueStatus", :foreign_key => "issue_status_when_finishing_timer_id"
   belongs_to :issue_status_when_finishing_timer_with_full_ratio, :class_name => "IssueStatus", :foreign_key => "issue_status_when_finishing_timer_with_full_ratio_id"
 
+  validates_presence_of :messenger_id, :user
+  validates_inclusion_of :messenger_notifications, :in => NOTIFICATION
+  
   # Returns false if this user hasn't been verified yet -- that is, a verification code is not nil.
   def verified?
     verification_code.nil?
+  end
+  
+  def receive_mail_notification?
+    self.messenger_notifications != "messenger_full"
+  end
+  
+  def receive_full_messenger_notification?
+    self.messenger_notifications == "mail_messenger_full" or self.messenger_notifications == "messenger_full"
+  end
+  
+  def receive_title_messenger_notification?
+    self.messenger_notifications == "mail_messenger_title"
   end
   
   def language

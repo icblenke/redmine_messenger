@@ -12,7 +12,12 @@ field_pause_when_become_offline_or_away: Resume timer when become offline/away
 field_issue_status_when_starting_timer: Status when starting timer
 field_issue_status_when_finishing_timer: Status when finishing timer
 field_issue_status_when_finishing_timer_with_full_ratio: Status when finishing timer with ratio 100%%
-field_messenger_notifications_instead_of_emails: Send messenger notifications instead of emails
+field_messenger_notifications: System notification
+field_messenger_notifications_mail: only mail
+field_messenger_notifications_mail_messenger_title: mail and title in messenger
+field_messenger_notifications_mail_messenger_full: mail and messenger
+field_messenger_notifications_messenger_full: only messenger
+
 field_assigning_issue_when_starting_timer: Assigning issue when starting timer
       
 messenger_welcome_message: Your JID has been registered at Redmine Messenger. Please add this contact to your list and send your verification code.
