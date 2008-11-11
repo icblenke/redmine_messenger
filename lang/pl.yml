@@ -73,7 +73,17 @@ messenger_command_timers_paused_because_of_status_change: Licznik dla '%s' był 
 
 # help
 
-messenger_view_help: Pomoc TODO
+messenger_view_help: "Messenger umożliwia komunikacje z Redmine poprzez komunikator internetowe (obecnie jabber).<br/><br/>
+W formularzu po lewej należy wpisać swój jid (jabber id) i skonfigurować działanie konta. Po zapisaniu swojego formularza otrzymasz kod weryfikujący oraz wiadomość powitalną na zarejestrowanym koncie. Dodaj kontakt który przysłał do wiadomość, będzie on służył do komunikacji z Redmine, oraz wyślij mu swój kod weryfikujący. Po otrzymasz potwierdzenia wszystko jest gotowe do współpracy.<br/><br/>
+Dodatkowa konfiguracja (formularz po lewej):
+<ul>
+<li>zmiany statusów - istnieje możliwość zmiany statusu zagadniej podczas uruchamiania i zatrzymywania licznika; przykładowo uruchamiasz licznik, status zmienia się na 'assigned', zatrzymujesz, zmienia się na 'finished'. Przy zatrzymywaniu licznika istnieje rozróżnienie w zależności od ratio wykonanych prac, inny status można ustawić dla ratio równego 100%%, a inny dla mniejszego niż 100%%</li>
+<li>automatycznie przypisywanie - Podczas uruchamiania licznika, zagadnienie może być automatycznie do ciebie przypisywane</li>
+<li>dostępność - podczas zmian twojej dostępności licznik może być automatycznie uruchamiany (jeśli stajesz się dostępny) lub zatrzymywamy (jeśli stajesz się niedostępny)</li>
+<li>powiadomienia - możliwość otrzymywania notyfikacji przez jabber o wysyłanych do ciebie z Redmine mailach</li>
+</ul>
+Poniżej lista dostępnych komend. Możesz także przejrzeć tą liste, wysyłająć przez jabbera komunikat 'help'.
+"
 
 messenger_error_param_missing: Niepoprawne parametry. Zobacz 'help %s' aby uzyskać więcej informacji.
 
