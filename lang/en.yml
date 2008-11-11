@@ -1,42 +1,37 @@
 messenger_menu_label: Messenger
+
 messenger_view_label_messenger: Messenger
 messenger_view_label_configuration: Configuration
 messenger_view_label_help: Help
+
+# verification
+
 messenger_view_notice_please_verify: Please verify your messenger account with code is %s.
+
 messenger_controller_notice_updated: Messenger configuration was successfully updated.
 messenger_controller_notice_updated_with_code: Messenger configuration was successfully updated. Please verify your messenger account with code is %s.
-
-field_messenger: Messenger ID
-field_resume_when_become_online: Resume timer when become online
-field_pause_when_become_offline_or_away: Resume timer when become offline/away
-field_issue_status_when_starting_timer: Status when starting timer
-field_issue_status_when_finishing_timer: Status when finishing timer
-field_issue_status_when_finishing_timer_with_full_ratio: Status when finishing timer with ratio 100%%
-field_messenger_notifications: Notification via messenger
-field_assigning_issue_when_starting_timer: Assign issue when starting timer
-      
-messenger_welcome_message: Your JID has been registered at Redmine Messenger. Please add this contact to your list and send your verification code.
-
-messenger_options_statuses_dont_change: don't change      
-      
-messenger_error_param_missing: Param missing, see 'help %s' for more information.
 
 messenger_verify_user_verified: Succesful verification. Welcome aboard!
 messenger_verify_wrong_code: Given code doesn't match to your verification code.
 messenger_verify_user_not_registered: Your messenger account hasn't been found.
 messenger_verify_not_verified: Please verify your messenger account with code.
 
-messenger_view_help: Help TODO
+messenger_welcome_message: Your JID has been registered at Redmine Messenger. Please add this contact to your list and send your verification code.
 
-messenger_help_header_short: Help for Redmine Messenger!
-messenger_help_header_long: Help for command '%s'
-messenger_help_footer_short: Type 'help <command>' for more information about the command.
-messenger_help_footer_long: Type 'help' for short information about all commands.
-messenger_help_not_found: I'm sorry, I don't understand '%s'.  Maybe try typing 'help'.
+# form
 
-messenger_help_group_general: General
+field_messenger: JID
+field_resume_when_become_online: Resume timer when become online
+field_pause_when_become_offline_or_away: Resume timer when become offline/away
+field_issue_status_when_starting_timer: Change issue status when starting timer
+field_issue_status_when_finishing_timer: Change issue status when finishing timer
+field_issue_status_when_finishing_timer_with_full_ratio: Change status when finishing timer with ratio 100%%
+field_messenger_notifications: Send notification via messenger
+field_assigning_issue_when_starting_timer: Assign issue when starting timer
+      
+messenger_options_statuses_dont_change: don't change      
 
-messenger_help_group_issues: Issues
+# command: issues
 
 messenger_command_issue_not_assigned_to_you: Operation not permitted, because issue is not assigned to you.
 messenger_command_issues_found: Found %d issues.
@@ -53,25 +48,9 @@ messenger_command_assing_not_assigned: Issue hasn't been assigned to '%s'.
 messenger_command_assing_already_assigned: Issue is already assigned to '%s'.
 messenger_command_assing_not_assignable_user: Issue cannot be assignet to user '%s'.
 messenger_command_issue_not_assignable_user: Operation not permitted, because you don't have proper rights.
-
-messenger_help_group_timers: Timers    
-
-messenger_help_command_start_short: Start timer for given issue.
-messenger_help_command_finish_short: Finish running timer and log time.
-messenger_help_command_status_short: Get status of your timer.
-messenger_help_command_note_short: Add note to your running timer.
-messenger_help_command_pause_short: Pause your running timer.
-messenger_help_command_resume_short: Resume your paused timer.
-messenger_help_command_cancel_short: Cancel your running timer.
-
-messenger_help_command_start_long: Start timer for given issue.
-messenger_help_command_finish_long: Finish running timer and log time.
-messenger_help_command_status_long: Get status of your timer.
-messenger_help_command_note_long: Add note to your running timer.
-messenger_help_command_pause_long: Pause your running timer.
-messenger_help_command_resume_long: Resume your paused timer.
-messenger_help_command_cancel_long: Cancel your running timer.
-    
+ 
+# command: timers
+   
 messenger_command_timers_issue_not_found: Issue can't be found.
 messenger_command_timers_resumed: Timer for issue '%s' has been resumed.
 messenger_command_timers_not_resumed: Timer for issue '%s' has been already running.
@@ -91,3 +70,47 @@ messenger_command_timers_not_running: Timer hasn't been started.
 messenger_command_timers_not_running_for_that_issue: Timer for '%s' hasn't been started.
 messenger_command_timers_resumed_because_of_status_change: Timer for issue '%s' has been resumed.
 messenger_command_timers_paused_because_of_status_change: Timer for issue '%s' has been paused.
+
+# help
+
+messenger_view_help: Help TODO
+
+messenger_error_param_missing: Param missing, see 'help %s' for more information.
+
+messenger_help_header_short: Help for Redmine Messenger!
+messenger_help_header_long: Help for command '%s'
+messenger_help_footer_short: Type 'help <command>' for more information about the command.
+messenger_help_footer_long: Type 'help' for short information about all commands.
+messenger_help_not_found: I'm sorry, I don't understand '%s'.  Type 'help' for all commands listing.
+
+messenger_help_group_general: General
+
+messenger_help_group_issues: Issues
+
+messenger_help_command_issue_short: Show information about given issue.
+messenger_help_command_assign_short: Assign issue to given user.
+messenger_help_command_issues_short: Show all issues.
+messenger_help_command_comment_short: Add comment to given issue.
+
+messenger_help_command_issue_long: Show information about given issue.
+messenger_help_command_assign_long: Assign issue to given user. Add comment if given.
+messenger_help_command_issues_long: Show all issues that are assigned to you or match given pattern.
+messenger_help_command_comment_long: Add comment to given issue.
+  
+messenger_help_group_timers: Timers    
+
+messenger_help_command_start_short: Start timer for given issue.
+messenger_help_command_finish_short: Finish running timer and log time.
+messenger_help_command_status_short: Get status of your timer.
+messenger_help_command_note_short: Add note to your running timer.
+messenger_help_command_pause_short: Pause your running timer.
+messenger_help_command_resume_short: Resume your paused timer.
+messenger_help_command_cancel_short: Cancel your running timer.
+
+messenger_help_command_start_long: Start timer for given issue. Add command if given.
+messenger_help_command_finish_long: Finish running timer and log time. Log time and add command if given.
+messenger_help_command_status_long: Get status of your timer.
+messenger_help_command_note_long: Add note to your running timer.
+messenger_help_command_pause_long: Pause your running timer. Add command if given.
+messenger_help_command_resume_long: Resume your paused timer. Add command if given.
+messenger_help_command_cancel_long: Cancel your running timer.

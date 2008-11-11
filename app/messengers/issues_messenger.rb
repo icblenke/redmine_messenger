@@ -4,12 +4,7 @@ class IssuesMessenger < RedmineMessenger::Base
     cmd.group :issues
     cmd.param :name, :type => :string, :required => false, :greedy => true
   end
-  
-  register_handler :all_issues do |cmd|
-    cmd.group :issues
-    cmd.param :name, :type => :string, :required => false, :greedy => true
-  end
-  
+    
   register_handler :issue do |cmd|
     cmd.group :issues
     cmd.param :issue_id, :type => :integer, :required => true   

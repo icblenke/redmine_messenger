@@ -41,7 +41,7 @@ All user related help is on page http://your_redmine_domain/user_messenger.
 * logging times
 * searching for issues
 * details of issue
-* timer status with logged time statisticsOB
+* timer status with logged time statistics
 * commenting issues
 * pausing/resuming timer when user become away/visible (configurable)
 * changing status of issue to 'in progress' while starting timer (configurable)
