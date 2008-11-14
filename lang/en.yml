@@ -73,7 +73,17 @@ messenger_command_timers_paused_because_of_status_change: Timer for issue '%s' h
 
 # help
 
-messenger_view_help: Help TODO
+messenger_view_help: "Messenger plugin allows you to communicate with Redmine via instant messenger (jabber).<br/><br/>
+Set your jid (jabber id) in the form on the left and configure account. After saving you should receive verification code and the welcome message to your jabber account. Add Redmine account to your buddy and send him verification code. Your registration is complete by now.<br/><br/>
+Additional configuration:
+<ul>
+<li>issues' status changing - when you start or finish timer, related issue's status will be changed (there is a different between finishing with ratio equals to 100%% and lower)</li>
+<li>auto-assigning - when you start timer, issue will be automatically assigned to you</li>
+<li>IM visibility - when your jabber account has change its status (offline, online, away), timer will be paused or resumed</li>
+<li>notifications - all of mails sended to you from Redmine will be forwarded to your jabber account</li>
+</ul>
+Type 'help' to get commands list. All commands are listed below.
+"
 
 messenger_error_param_missing: Param missing, see 'help %s' for more information.
 
