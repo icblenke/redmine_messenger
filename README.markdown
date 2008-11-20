@@ -26,7 +26,7 @@ Run Redmine and have a fun!
 
 ## Registration
 
-Login to your Redmine. Go to page http://your_redmine_domain/user_messenger and fill Messenger ID field with your jabber id. Click save. You will receive verification code.
+Login to your Redmine. Go to page http://your\_redmine\_domain/user\_messenger and fill Messenger ID field with your jabber id. Click save. You will receive verification code.
 
 Add Redmine jabber account as your contact and send him your verification code. You should receive confirmation.
 
@@ -34,7 +34,7 @@ Type 'help' and read what you can do with it.
 
 ## Help
 
-All user related help is on page http://your_redmine_domain/user_messenger.
+All user related help is on page http://your\_redmine\_domain/user\_messenger.
 
 ## Features
 
@@ -52,8 +52,8 @@ All user related help is on page http://your_redmine_domain/user_messenger.
 
 ## Issues
 
-See http://mszczytowski.lighthouseapp.com/projects/19134-redmine_messenger/
+See [Redmine Messenger LightHouse page](http://mszczytowski.lighthouseapp.com/projects/19134-redmine_messenger/).
 
 ## Extending
 
-To extend functionality create file app/messenger/NAME_messenger.rb. See app/messenger/issues_messenger.rb for usage example.
+To extend functionality create file app/messenger/NAME\_messenger.rb. See app/messenger/issues\_messenger.rb for usage example.
