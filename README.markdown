@@ -1,29 +1,30 @@
-= Redmine Messenger
+Redmine Messenger
+=================
 
 Plugin to allow users to communicate with Redmine via Instant Messenger.
 
-= Instalation
+## Instalation
 
 Download the sources and put them to your vendor/plugins folder.
 
-$ cd {REDMINE_ROOT}
-$ git clone git://github.com/mszczytowski/redmine_messenger.git vendor/plugins/redmine_messenger
+    $ cd {REDMINE_ROOT}
+    $ git clone git://github.com/mszczytowski/redmine_messenger.git vendor/plugins/redmine_messenger
 
 Copy default messenger.yml to your config folder.
 
-$ cp vendor/plugins/redmine_messenger/config/messenger.yml config/
+    $ cp vendor/plugins/redmine_messenger/config/messenger.yml config/
 
 Create jabber account for Redmine user and set its configuration in messenger.yml.
 
-$ vim config/messenger.yml
+    $ vim config/messenger.yml
 
 Migrate database.
 
-$ rake db:migrate_plugins
+    $ rake db:migrate_plugins
 
 Run Redmine and have a fun!
 
-= Registration
+## Registration
 
 Login to your Redmine. Go to page http://your_redmine_domain/user_messenger and fill Messenger ID field with your jabber id. Click save. You will receive verification code.
 
@@ -31,11 +32,11 @@ Add Redmine jabber account as your contact and send him your verification code. 
 
 Type 'help' and read what you can do with it.
 
-= Help
+## Help
 
 All user related help is on page http://your_redmine_domain/user_messenger.
 
-= Features
+## Features
 
 * timers
 * logging times
@@ -49,10 +50,10 @@ All user related help is on page http://your_redmine_domain/user_messenger.
 * assigning issues
 * notifications (configurable)
 
-= Issues
+## Issues
 
 See http://mszczytowski.lighthouseapp.com/projects/19134-redmine_messenger/
 
-= Extending
+## Extending
 
 To extend functionality create file app/messenger/NAME_messenger.rb. See app/messenger/issues_messenger.rb for usage example.
