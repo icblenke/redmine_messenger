@@ -10,6 +10,10 @@ module RedmineMessenger
 
         @client = Jabber::Client.new(Jabber::JID.new(jid))
         
+        @client.use_ssl = true if config['ssl']
+
+        Jabber::debug = true if config['debug']
+
         RAILS_DEFAULT_LOGGER.info "CONNECTING"
         
         connect

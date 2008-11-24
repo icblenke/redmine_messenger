@@ -5,6 +5,8 @@ development: &development
   host: jabber.com
   port: 5222
   status: hello world
+  ssl: false
+  debug: false
 
 test:
   type: mock
