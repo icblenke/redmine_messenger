@@ -4,13 +4,16 @@ class Mailer < ActionMailer::Base
   
   def create!(method_name, *parameters)
     mail = create_without_messenger!(method_name, *parameters)
-    
-    return mail if mail.to.nil?
+
+    return mail if mail.to.nil? and mail.bcc.nil?
     
     message = nil
     
-    mail.to.each do |email|  
-      if user = User.find_by_mail(email) and messenger = UserMessenger.find_by_user_id(user.id) and messenger.messenger_notifications?
+    to = mail.to
+    to ||= mail.bcc # why?
+    
+    to.each do |email|
+      if user = User.find_by_mail(email) and messenger = UserMessenger.find_by_user_id(user.id) and messenger.messenger_notifications?                      
         if message.nil?
           footer = Setting[:emails_footer].gsub(/\r\n/, "\n")
           message = mail.body.gsub(/#{footer}.*/m, "").gsub(/[-]{3,}/, "\n").gsub(/[\n]{3,}/, "\n\n").strip
