@@ -14,8 +14,6 @@ module RedmineMessenger
 
         Jabber::debug = true if config['debug']
 
-        RAILS_DEFAULT_LOGGER.info "CONNECTING"
-        
         connect
 
         @client.on_exception do |e,client,where|
