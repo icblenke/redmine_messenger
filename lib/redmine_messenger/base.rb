@@ -1,7 +1,7 @@
 module RedmineMessenger
   class Base
 
-    include GLoc
+    include I18n
     
     class << self
       
