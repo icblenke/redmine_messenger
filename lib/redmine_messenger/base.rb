@@ -1,7 +1,11 @@
 module RedmineMessenger
   class Base
 
-    include I18n
+    if defined? I18n 
+      include I18n
+    else
+      include GLoc
+    end
     
     class << self
       

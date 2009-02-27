@@ -1,5 +1,7 @@
 class UserMessengerController < ApplicationController
 
+  unloadable
+
   def index    
     user = User.current
     
