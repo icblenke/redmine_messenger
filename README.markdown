@@ -5,6 +5,10 @@ Plugin to allow users to communicate with Redmine via Instant Messenger.
 
 ## Instalation
 
+Install Xmpp4r library.
+
+    $ gem install xmpp4r
+
 Download the sources and put them to your vendor/plugins folder.
 
     $ cd {REDMINE_ROOT}
