@@ -4,8 +4,8 @@ module UserMessengerHelper
     options = []
     options << [l(:messenger_options_statuses_dont_change, nil)]
     IssueStatus.all.each do |x| 
-      name = l("default_issue_status_#{x.name.downcase}".to_sym, x.name.downcase).downcase
-      options << [name, x.id]      
+      #name = l("default_issue_status_#{x.name.downcase}".to_sym, x.name.downcase).downcase
+      options << [x.name.downcase, x.id]      
     end
     options    
   end
