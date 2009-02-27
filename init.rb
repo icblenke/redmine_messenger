@@ -5,10 +5,6 @@ require 'yaml'
 require 'xmpp4r'
 require 'xmpp4r/roster/helper/roster'
 
-unless defined? I18n
-  I18n = GLoc
-end
-
 require_dependency 'redmine_messenger/messenger'
 require_dependency 'redmine_messenger/messengers/mock_messenger'
 require_dependency 'redmine_messenger/messengers/xmpp4r_messenger'
