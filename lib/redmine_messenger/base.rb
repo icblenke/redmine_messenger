@@ -1,13 +1,13 @@
 module RedmineMessenger
   class Base
 
-    if defined? I18n 
-      include I18n
-    else
-      include GLoc
-    end
-    
     class << self
+    
+      if defined? Redmine::I18n
+        include Redmine::I18n
+      else
+        include GLoc
+      end
       
       # Catch all methods starting with <tt>delivel_</tt> or <tt>receive_</tt>.
       #
