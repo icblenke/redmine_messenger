@@ -18,12 +18,20 @@ Dir[File.join(File.dirname(__FILE__), "app/messengers/*.rb")].each do |file|
 end
 
 Redmine::Plugin.register :redmine_messenger do
-  name 'Messenger'
+  name 'Messenger Plugin'
   author 'Maciej Szczytowski'
   description 'Messenger is a plugin to allow users to communicate with Redmine via Instant Messenger.'
   version '0.0.8'
+ 
+  # Minimum version of Redmine.  
   
+  requires_redmine :version_or_higher => '0.8.0'
+
+  # Configuring permissions for plugin's controller.
+    
   permission :user_messenger, {"user_messenger".to_sym => [:index]}, :public => true
+
+  # Creating menu entry. 
   
   menu :account_menu, :user_messenger, { :controller => 'user_messenger', :action => 'index' }, :caption => :messenger_menu_label, :after => :my_account, :if => Proc.new { User.current.logged? }
 end
