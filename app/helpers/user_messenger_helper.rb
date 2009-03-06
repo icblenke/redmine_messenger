@@ -2,9 +2,8 @@ module UserMessengerHelper
   
   def issue_status_to_select
     options = []
-    options << [l(:messenger_options_statuses_dont_change, nil)]
+    options << [l(:messenger_options_statuses_dont_change)]
     IssueStatus.all.each do |x| 
-      #name = l("default_issue_status_#{x.name.downcase}".to_sym, x.name.downcase).downcase
       options << [x.name.downcase, x.id]      
     end
     options    

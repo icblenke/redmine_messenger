@@ -26,9 +26,9 @@ class UserMessengerController < ApplicationController
       @user_messenger.assigning_issue_when_starting_timer = params[:user_messenger][:assigning_issue_when_starting_timer]
       if @user_messenger.save
         if @user_messenger.verification_code
-            flash[:notice] = l(:messenger_controller_notice_updated_with_code, @user_messenger.verification_code)
+            flash[:notice] = l(:messenger_controller_notice_updated_with_code, :verification_code => @user_messenger.verification_code)
         else
-            flash[:notice] = l(:messenger_controller_notice_updated, @user_messenger.verification_code)
+            flash[:notice] = l(:messenger_controller_notice_updated, :verification_code => @user_messenger.verification_code)
         end
         redirect_to :action => 'index'
       end    

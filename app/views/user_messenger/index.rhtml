@@ -1,4 +1,4 @@
-<%= content_tag('div', l(:messenger_view_notice_please_verify, @user_messenger.verification_code), :class => 'flash notice') if @user_messenger.verification_code and not flash[:notice] %>
+<%= content_tag('div', l(:messenger_view_notice_please_verify, :verification_code => @user_messenger.verification_code), :class => 'flash notice') if @user_messenger.verification_code and not flash[:notice] %>
 
 <h2><%=l(:messenger_view_label_messenger)%></h2>
 

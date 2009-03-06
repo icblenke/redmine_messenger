@@ -3,11 +3,7 @@ module RedmineMessenger
 
     class << self
     
-      if defined? Redmine::I18n
-        include Redmine::I18n
-      else
-        include GLoc
-      end
+      include Redmine::I18n
       
       # Catch all methods starting with <tt>delivel_</tt> or <tt>receive_</tt>.
       #
@@ -95,9 +91,9 @@ module RedmineMessenger
         unless @helps[command]
           if cmd = Base.commands[command]
             # Help for given command.
-            @helps[command] = ll(messenger.language, :messenger_help_header_long, cmd.to_s) << "\n\n"
+            @helps[command] = ll(messenger.language, :messenger_help_header_long, :command => cmd.to_s) << "\n\n"
             @helps[command] << ll(messenger.language, "messenger_help_command_#{cmd.command.to_s}_long".to_sym)
-            @helps[command] << "\n\n" << ll(messenger.language, :messenger_help_footer_long, cmd.to_s)
+            @helps[command] << "\n\n" << ll(messenger.language, :messenger_help_footer_long)
           else
             # Help for all commands.
             @helps[command] = ll(messenger.language, :messenger_help_header_short) << "\n\n"
@@ -149,7 +145,7 @@ module RedmineMessenger
 
     # Send 'param missing' message.
     def param_missing(messenger, command)
-      Messenger.send_message(messenger.messenger_id, ll(messenger.language, :messenger_error_param_missing, command))
+      Messenger.send_message(messenger.messenger_id, ll(messenger.language, :messenger_error_param_missing, :command => command))
     end
     
     # Verify user and send proper message.
