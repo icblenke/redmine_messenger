@@ -41,7 +41,7 @@ Thanks for contribution.
 
 ### 0.0.8
 
-- bug fixes (#1)
+- bug fixes (#1, #2)
 
 ## Registration
 
