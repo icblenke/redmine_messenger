@@ -28,7 +28,7 @@ Redmine::Plugin.register :redmine_messenger do
   author 'Maciej Szczytowski'
   description 'Messenger is a plugin to allow users to communicate with Redmine via Instant Messenger.'
   url 'http://github.com/mszczytowski/redmine_messenger/'
-  version '0.0.8'
+  version '0.0.9'
  
   # Minimum version of Redmine.  
   
