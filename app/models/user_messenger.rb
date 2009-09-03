@@ -1,5 +1,9 @@
 class UserMessenger < ActiveRecord::Base
 
+  unless defined?(Redmine::I18n)
+    include MessengerI18nPatch
+  end
+
   belongs_to :user
   belongs_to :issue
   belongs_to :issue_status_when_starting_timer, :class_name => "IssueStatus", :foreign_key => "issue_status_when_starting_timer_id"

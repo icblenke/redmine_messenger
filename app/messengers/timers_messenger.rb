@@ -1,5 +1,9 @@
 class IssuesMessenger < RedmineMessenger::Base
 
+  unless defined?(Redmine::I18n)
+    include MessengerI18nPatch
+  end
+
   register_handler :pause do |cmd|
     cmd.group :timers
     cmd.param :note, :type => :string, :greedy => true, :required => false

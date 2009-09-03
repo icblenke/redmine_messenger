@@ -1,10 +1,14 @@
 module RedmineMessenger
   class Base
 
-    class << self
-    
+    if defined?(Redmine::I18n)
       include Redmine::I18n
-      
+    else
+      extend MessengerI18nPatch
+    end
+   
+    class << self
+     
       # Catch all methods starting with <tt>delivel_</tt> or <tt>receive_</tt>.
       #
       # Methods <tt>delivel_METHOD_NAME</tt> sends +parameters+ to your 
@@ -145,7 +149,7 @@ module RedmineMessenger
 
     # Send 'param missing' message.
     def param_missing(messenger, command)
-      Messenger.send_message(messenger.messenger_id, ll(messenger.language, :messenger_error_param_missing, :command => command))
+      Messenger.send_message(messenger.messenger_id, Base.ll(messenger.language, :messenger_error_param_missing, :command => command))
     end
     
     # Verify user and send proper message.
@@ -153,15 +157,15 @@ module RedmineMessenger
       if user = UserMessenger.find_by_messenger_id(messenger_id)
         if code =~ /^(\d+)/
           if user.verify($1)
-            responce = ll(Setting['default_language'], :messenger_verify_user_verified)
+            responce = Base.ll(Setting['default_language'], :messenger_verify_user_verified)
           else
-            responce = ll(Setting['default_language'], :messenger_verify_wrong_code)
+            responce = Base.ll(Setting['default_language'], :messenger_verify_wrong_code)
           end
         else
-          responce = ll(Setting['default_language'], :messenger_verify_not_verified)
+          responce = Base.ll(Setting['default_language'], :messenger_verify_not_verified)
         end
       else
-        responce = ll(Setting['default_language'], :messenger_verify_user_not_registered)
+        responce = Base.ll(Setting['default_language'], :messenger_verify_user_not_registered)
       end
       Messenger.send_message(messenger_id, responce)
     end

@@ -1,9 +1,15 @@
 require 'redmine'
 
+RAILS_DEFAULT_LOGGER.info 'Starting Messemger Plugin for RedMine'
+
 require 'rubygems'
 require 'yaml'
 require 'xmpp4r'
 require 'xmpp4r/roster/helper/roster'
+
+unless defined?(Redmine::I18n)
+  require_dependency 'redmine_messenger/i18n_patch'
+end
 
 require_dependency 'redmine_messenger/messenger'
 require_dependency 'redmine_messenger/messengers/mock_messenger'
@@ -21,6 +27,7 @@ Redmine::Plugin.register :redmine_messenger do
   name 'Messenger Plugin'
   author 'Maciej Szczytowski'
   description 'Messenger is a plugin to allow users to communicate with Redmine via Instant Messenger.'
+  url 'http://github.com/mszczytowski/redmine_messenger/'
   version '0.0.8'
  
   # Minimum version of Redmine.  

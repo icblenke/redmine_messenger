@@ -1,4 +1,8 @@
 module UserMessengerHelper
+
+  unless defined?(Redmine::I18n)
+    include MessengerI18nPatch
+  end
   
   def issue_status_to_select
     options = []

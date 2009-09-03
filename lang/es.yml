@@ -1,0 +1,124 @@
+messenger_menu_label: "Messenger"
+
+messenger_view_label_messenger: "Messenger"
+messenger_view_label_configuration: "Configuracion"
+messenger_view_label_help: "Ayuda"
+
+# verification
+
+messenger_view_notice_please_verify: "Por favor verifique su cuenta de mensajeria con el siguiente codigo {{verification_code}}."
+
+messenger_controller_notice_updated: "La configuracion de Mensajeria fue actualizada satisfactoriamente."
+messenger_controller_notice_updated_with_code: "La configuracion de mensajeria fue actualizada satisfactoriamente. Por favor verifique su cuenta de mensajeria con el siguiente codigo {{verification_code}}."
+
+messenger_verify_user_verified: "Verificacion satisfactoria. Bienvenido!"
+messenger_verify_wrong_code: "El codigo introducido no coincide con su codigo de verificacion."
+messenger_verify_user_not_registered: "Su cuenta de mensajeria no ha sido encontrada."
+messenger_verify_not_verified: "Por favor verifique su cuenta de mensajeria con el codigo."
+
+messenger_welcome_message: "Su Jabber ID fue registrado en la mensajeria del RedMine. Por favor a&ntilde;ada este contacto a su lista y envie su codigo de verificacion."
+
+# form
+
+field_messenger: "Jabber ID"
+field_resume_when_become_online: "Reanude el temporizador cuando entre al sistema"
+field_pause_when_become_offline_or_away: "Reanude el temporizador cuando se vuelva inactivo o salga del sistema"
+field_issue_status_when_starting_timer: "Cambie el estado de la peticion cuando comience el temporizador"
+field_issue_status_when_finishing_timer: "Cambie el estado de la peticion cuando termine el temporizador"
+field_issue_status_when_finishing_timer_with_full_ratio: "Cambie el estado de la peticion cuando termine el temporizador con 100%%"
+field_messenger_notifications: "Envie notificacion a traves de mensajeria"
+field_assigning_issue_when_starting_timer: "Asigne la peticion cuando comienze el temporizador"
+      
+messenger_options_statuses_dont_change: "No cambiar"
+
+# command: issues
+
+messenger_command_issue_not_assigned_to_you: "Operacion no permitida, la peticion no le ha sido asignada a usted."
+messenger_command_issues_found: "Han sido encontradas {{found}} peticiones."
+messenger_command_issues_not_found: "No existe peticion con '{{issue}}' en el nombre."
+messenger_command_issues_assigned_not_found: "No ha asignado ninguna peticion."
+messenger_command_issue_not_found: "No se encontro la peticion."
+messenger_command_issue_status: "estado: {{status}}" 
+messenger_command_issue_assigned_to: "asignado a: {{login}}"
+messenger_command_comment_commented: "Comentario a&ntilde;adido."
+messenger_command_comment_not_commented: "El comentario no ha sido a&ntilde;adido."
+messenger_command_assing_user_not_found: "El usuario con nombre '{{login}}' no existe."
+messenger_command_assing_assigned: "La peticion ha sido asignada a '{{login}}'."
+messenger_command_assing_not_assigned: "La peticion no ha sido asignada a '{{login}}'."
+messenger_command_assing_already_assigned: "La peticion ya fue asignada a '{{login}}'."
+messenger_command_assing_not_assignable_user: "No se puede asignar la peticion a '{{login}}'."
+messenger_command_issue_not_assignable_user: "Operacion no permitida, usted no tiene los permisos necesarios."
+ 
+# command: timers
+   
+messenger_command_timers_issue_not_found: "La peticion no ha sido encontrada."
+messenger_command_timers_resumed: "Temporizador para la peticion '{{issue}}' fue reanudado."
+messenger_command_timers_not_resumed: "Temporizador para la peticion '{{issue}}' ya ha sido reanudado."
+messenger_command_timers_paused: "Temporizador para la peticion '{{issue}}' fue puesto en pausa."
+messenger_command_timers_not_paused: "Temporizador para la peticion '{{issue}}' ya ha sido puesto en pausa."
+messenger_command_timers_cancelled: "Temporizador para la peticion '{{issue}}' fue cancelado."
+messenger_command_timers_finished: "Temporizador para la peticion '{{issue}}' fue terminado."
+messenger_command_timers_not_finished: "Temporizador para la peticion '{{issue}}' no puede ser terminado."
+messenger_command_timers_noted: "Nota de temporizador para la peticion '{{issue}}' fue a&ntilde;adida."
+messenger_command_timers_running: "Temporizador para la peticion '{{issue}}' fue iniciado."
+messenger_command_timers_running_status: "Temporizador para la peticion '{{issue}}' fue iniciado. Activado por {{minutes}} minutos."
+messenger_command_timers_paused_status: "Temporizador para la peticion '{{issue}}' fue pausado."
+messenger_command_timers_running_stats_time: "Horas activo en el sistema para la peticion: {{hours_logged_by_you_today}} de usted hoy, {{hours_logged_by_you}} de usted, {{hours_logged_by_all}} de todos."
+messenger_command_timers_running_stats_done_with_estimation: "{{done}}%% del trabajo realizado, le restan {{remaining_hours}} horas de {{estimated_hours}} estimadas."
+messenger_command_timers_running_stats_done: "{{done}}%% del trabajo realizado. El tiempo no ha sido estimado."
+messenger_command_timers_not_running: "Temporizador no ha sido iniciado."
+messenger_command_timers_not_running_for_that_issue: "Temporizador para la peticion '{{issue}}' no fue iniciado."
+messenger_command_timers_resumed_because_of_status_change: "Temporizador para la peticion '{{issue}}'  fue renaudado."
+messenger_command_timers_paused_because_of_status_change: "Temporizador para la peticion '{{issue}}' fue pausado."
+
+#help
+
+messenger_view_help: "El plugin de mensajeria te permite comunicar con el RedMine mediante mensajes instantaneos (jabber).<br/><br/> Entre su JID de jabber (jabber id) en el formulario de la izquierda y configure su cuenta. Luego de salvar usted debe recibir los mensajes de verificacion y bienvenida a su cuenta de jabber. A&ntilde;ada la cuenta de RedMine a su lista de contactos y envie su codigo de verificacion. Su registro esta completado hasta ahora.<br/><br/>
+Configuracion adicional:
+<ul>
+<li>cambio de estado de la peticion - cuando termine o inicie el temporizador, el estado de la peticion relacionada cambiara (existe una diferencia entre terminar con 100%% y menos de eso)</li>
+<li>auto-asignacion - cuando inicie el temporizador, la peticion sera asignada a usted automaticamente</li>
+<li>visibilidad de IM - cuando cambie el estado de su cuenta del jabber (offline, online, away), el temporizador sera parado o renaudado</li>
+<li>notificaciones - todos los mensajes enviados a usted por el RedMine seran reenviados a su cuenta del jabber</li>
+</ul>
+Teclee 'help' para obtener la lista de ayuda. Todos los comandos son listados a continuacion."
+
+messenger_error_param_missing: "Faltan parametros, vea 'help {{command}}' para mas informacion."
+
+messenger_help_header_short: "Ayuda para la mensajeria del RedMine!"
+messenger_help_header_long: "Ayuda para comandos '{{command}}'"
+messenger_help_footer_short: "Teclee 'help <comando>' para mas informacion sobre el comando."
+messenger_help_footer_long: "Teclee 'help' para una corta informacion para sobre todos los comandos."
+messenger_help_not_found: "Lo siento no entiendo '{{command}}'. Teclee 'help' para mostrar la lista de todos los comandos."
+
+messenger_help_group_general: "General"
+
+messenger_help_group_issues: "Peticiones"
+
+messenger_help_command_issue_short: "Muestra informacion sobre las peticiones asignadas."
+messenger_help_command_assign_short: "Asigna peticion al usuario dado."
+messenger_help_command_issues_short: "Muestra todas las peticiones."
+messenger_help_command_comment_short: "A&ntilde;ade comentario a la peticion dada."
+
+messenger_help_command_issue_long: "Muestra informacion sobre la peticion dada."
+messenger_help_command_assign_long: "Asigna peticion al usuario dado. A&ntilde;ade comentario si se introduce."
+messenger_help_command_issues_long: "Muestra todas las peticiones que fueron asignadas a usted o iguala un patron dado."
+messenger_help_command_comment_long: "A&ntilde;ade comentario a la peticion dada."
+
+messenger_help_group_timers: "Timers"
+
+messenger_help_command_start_short: "Inicia el temporizador para una peticion."
+messenger_help_command_finish_short: "Finaliza el temporizador en curso y tiempo de registro."
+messenger_help_command_status_short: "Obtiene el estado del temporizador."
+messenger_help_command_note_short: "Agrega nota al temporizador en curso."
+messenger_help_command_pause_short: "Para el temporizador activo."
+messenger_help_command_resume_short: "Reanuda el temporizador pausado."
+messenger_help_command_cancel_short: "Cancela el temporizador activo."
+
+messenger_help_command_start_long: "Inicia el temporizador para una peticion. A&ntilde;ade  comando si es puesto."
+messenger_help_command_finish_long: "Finaliza el temporizador y tiempo de registro. Registra el tiempo y a&ntilde;ade un comando si es puesto."
+messenger_help_command_status_long: "Obtiene el estado del temporizador."
+messenger_help_command_note_long: "Agrega nota al temporizador en curso."
+messenger_help_command_pause_long: "Para el temporizador activo. A&ntilde;ade comando si se da."
+messenger_help_command_resume_long: "Reanuda el temporizador parado. A&ntilde;ade comando si se da."
+messenger_help_command_cancel_long: "Cancela el temporizador activo."

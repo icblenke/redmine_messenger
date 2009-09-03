@@ -28,6 +28,21 @@ Migrate database.
 
 Run Redmine and have a fun!
 
+## Translations
+
+- en by myself
+- es by smlghst
+- ru by akrus
+- pl by myself
+
+Thanks for contribution.
+
+## Changelog
+
+### 0.0.8
+
+- bug fixes (#1)
+
 ## Registration
 
 Login to your Redmine. Go to page http://your\_redmine\_domain/user\_messenger and fill Messenger ID field with your jabber id. Click save. You will receive verification code.
@@ -53,10 +68,6 @@ All user related help is on page http://your\_redmine\_domain/user\_messenger.
 * changing status of issue to 'finished' while finishing timer with ratio equalt to 100 (configurable)
 * assigning issues
 * notifications (configurable)
-
-## Issues
-
-See [Redmine Messenger LightHouse page](http://mszczytowski.lighthouseapp.com/projects/19134-redmine_messenger/).
 
 ## Extending
 

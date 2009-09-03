@@ -1,5 +1,9 @@
 class IssuesMessenger < RedmineMessenger::Base
 
+  unless defined?(Redmine::I18n)
+    include MessengerI18nPatch
+  end
+
   register_handler :issues do |cmd|
     cmd.group :issues
     cmd.param :name, :type => :string, :required => false, :greedy => true

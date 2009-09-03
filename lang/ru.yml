@@ -1,0 +1,126 @@
+messenger_menu_label: "Messenger"
+
+messenger_view_label_messenger: "Messenger"
+messenger_view_label_configuration: "Настройка"
+messenger_view_label_help: "Справка"
+
+# verification
+
+messenger_view_notice_please_verify: "Пожалуйста, подтвердите вашу учетную запись с помощью кода проверки {{verification_code}}."
+
+messenger_controller_notice_updated: "Настройки обмена сообщениями обновлены."
+messenger_controller_notice_updated_with_code: "Настройки обмена сообщениями обновлены. Пожалуйста, подтвердите вашу учетную запись с помощью кода проверки {{verification_code}}."
+
+messenger_verify_user_verified: "Проверка завершена успешно. Добро пожаловать в систему Redmine Messenger!"
+messenger_verify_wrong_code: "Указанный вами код не совпадает с кодом проверки."
+messenger_verify_user_not_registered: "Ваша учетная запись не зарегистрирована."
+messenger_verify_not_verified: "Пожалуйста, подтвердите учетную запись с помощью кода проверки."
+
+messenger_welcome_message: "Ваш Jabber ID зарегистрирован в системе Redmine Messenger. Пожалуйста, добавьте этот контакт в ваш список контактов и отправьте ему код проверки."
+
+# form
+
+field_messenger: "Jabber ID"
+field_resume_when_become_online: "Продолжать учет времени после входа в сеть"
+field_pause_when_become_offline_or_away: "Приостанавливать учет времени после выхода из сети или недоступности"
+field_issue_status_when_starting_timer: "Изменять состояние заявки при начале учета времени"
+field_issue_status_when_finishing_timer: "Изменять состояние заявки при завершении учета времени"
+field_issue_status_when_finishing_timer_with_full_ratio: "Изменять состояние заявки, когда состояние достигает 100%%"
+field_messenger_notifications: "Отправлять уведомления в Jabber"
+field_assigning_issue_when_starting_timer: "Назначать заявку при начале учета времени"
+      
+messenger_options_statuses_dont_change: "не изменять"
+
+# command: issues
+
+messenger_command_issue_not_assigned_to_you: "Выполнение запрещено, заявка назначена другому пользователю."
+messenger_command_issues_found: "Найдено {{found}} заявок."
+messenger_command_issues_not_found: "Заявки, содержащие текст '{{command}}' в названии, не найдены."
+messenger_command_issues_assigned_not_found: "У вас нет назначенных заявок."
+messenger_command_issue_not_found: "Заявка не найдена."
+messenger_command_issue_status: "состояние: {{status}}"
+messenger_command_issue_assigned_to: "назначено: {{login}}"
+messenger_command_comment_commented: "Комментарий добавлен."
+messenger_command_comment_not_commented: "Не удалось добавить комментарий."
+messenger_command_assing_user_not_found: "Пользователь с именем {{login}} не существует."
+messenger_command_assing_assigned: "Заявка назначена пользователю {{login}}."
+messenger_command_assing_not_assigned: "Не удалось назначить заявку пользователю {{login}}."
+messenger_command_assing_already_assigned: "Заявка уже назначена пользователю {{login}}."
+messenger_command_assing_not_assignable_user: "Заявка не может быть назначена пользователю {{login}}."
+messenger_command_issue_not_assignable_user: "Выполнение запрещено, у вас недостаточно прав для выполнения операции."
+ 
+# command: timers
+   
+messenger_command_timers_issue_not_found: "Заявка не найдена."
+messenger_command_timers_resumed: "Учет времени для заявки '{{issue}}' продолжен."
+messenger_command_timers_not_resumed: "Учет времени для заявки '{{issue}}' уже начат."
+messenger_command_timers_paused: "Учет времени для заявки '{{issue}}' приостановлен."
+messenger_command_timers_not_paused: "Учет времени для заявки '{{issue}}' уже приостановлен."
+messenger_command_timers_cancelled: "Учет времени для заявки '{{issue}}' отменен."
+messenger_command_timers_finished: "Учет времени для заявки '{{issue}}' завершен."
+messenger_command_timers_not_finished: "Учет времени для заявки '{{issue}}' не может быть завершен."
+messenger_command_timers_noted: "Учет времени для заявки '{{issue}}' добавлен."
+messenger_command_timers_running: "Учет времени для заявки '{{issue}}' начат."
+messenger_command_timers_running_status: "Учет времени для заявки '{{issue}}' начат. Текущее состояние {{minutes}} минут."
+messenger_command_timers_paused_status: "Учет времени для заявки '{{issue}}' приостановлен."
+messenger_command_timers_running_stats_time: "Количество часов по заявке: {{hours_logged_by_you_today}} вами сегодня, {{hours_logged_by_you}} вами, {{hours_logged_by_all}} всеми пользователями."
+messenger_command_timers_running_stats_done_with_estimation: "{{done}}%% работы выполнено, осталось {{remaining_hours}} часов до завершения из {{estimated_hours}} ожидаемых."
+messenger_command_timers_running_stats_done: "{{done}}%% работы выполнено. Ожидаемое время завершение неизвестно."
+messenger_command_timers_not_running: "Учет времени не был начат."
+messenger_command_timers_not_running_for_that_issue: "Учет времени для заявки '{{issue}}' не был начат."
+messenger_command_timers_resumed_because_of_status_change: "Учет времени для заявки '{{issue}}' продолжен."
+messenger_command_timers_paused_because_of_status_change: "Учет времени для заявки '{{issue}}' приостановлен."
+
+# help
+
+messenger_view_help: "Jabber в Redmine позволяет вам получать информацию с помощью мгновенных сообщений.<br/><br/>
+Укажите ваш Jabber ID в форме слева и настройте учетную запись. После сохранения вы получите сообщение и приветствие от Redmine. Добавьте Redmine в список ваших контактов и отправьте ему сообщение с кодом проверки. Ваша регистрация успешно завершена.<br/><br/>
+Дополнительные настройки:
+<ul>
+<li>изменение состояния заявок - когда вы начинаете или завершаете учет времени, состояние указанной заявки будет изменено (состояние отличается, если выполнено 100%% заявки или меньше)</li>
+<li>автоматическое назначение - когда вы начинаете учет времени, заявка будет автоматически назначена вам</li>
+<li>видимость - когда ваша учетная запись Jabber изменяет состояние (не в сети, в сети, нет на месте), учет времени будет приостановлен или продолжен</li>
+<li>уведомления - все заявки, добавленные в Redmine, отправляются вам в Jabber</li>
+</ul>
+Введите 'help' для получения списка команд. Все команды приведены ниже.
+"
+
+messenger_error_param_missing: "Отсутствует параметр, введите 'help {{command}}' для получения дополнительной информации."
+
+messenger_help_header_short: "Справка Redmine Messenger"
+messenger_help_header_long: "Справка к команде '{{command}}'"
+messenger_help_footer_short: "Введите 'help <команда>' для получения дополнительной информации о команде."
+messenger_help_footer_long: "Введите 'help' для получения информации о доступных командах."
+messenger_help_not_found: "Извините, команда '{{command}}' неизвестна. Введите 'help' для отображения списка доступных команд."
+
+messenger_help_group_general: "Общее"
+
+messenger_help_group_issues: "Заявки"
+
+messenger_help_command_issue_short: "Показать информацию о заявке."
+messenger_help_command_assign_short: "Назначить заявку пользователю."
+messenger_help_command_issues_short: "Показать все заявки."
+messenger_help_command_comment_short: "Добавить комментарий к указанной заявке."
+
+messenger_help_command_issue_long: "Показать информацию о заявке."
+messenger_help_command_assign_long: "Назначить заявку указанному пользователю. Добавить комментарий, если он указан."
+messenger_help_command_issues_long: "Показать все назначенные вам заявки или показать все заявки, которые содержат указанный текст в названии."
+messenger_help_command_comment_long: "Добавить комментарий к указанной заявке."
+  
+messenger_help_group_timers: "Учет времени"
+
+messenger_help_command_start_short: "Начать учет времени для указанной заявки."
+messenger_help_command_finish_short: "Завершить учет времени и отметить количество часов."
+messenger_help_command_status_short: "Узнать состояние учета времени."
+messenger_help_command_note_short: "Добавить примечание к учету времени."
+messenger_help_command_pause_short: "Приостановить учет времени."
+messenger_help_command_resume_short: "Продолжить приостановленный учет времени."
+messenger_help_command_cancel_short: "Отменить учет времени."
+
+messenger_help_command_start_long: "Начать учет времени для указанной заявки. Добавить команду, если указано."
+messenger_help_command_finish_long: "Завершить учет времени. Отметить количество часов и добавить команду, если указано."
+messenger_help_command_status_long: "Узнать состояние учета времени."
+messenger_help_command_note_long: "Добавить примечание к учету времени."
+messenger_help_command_pause_long: "Приостановить учет времени. Добавить команду, если указано."
+messenger_help_command_resume_long: "Продолжить приостановленный учет времени. Добавить команду, если указано."
+messenger_help_command_cancel_long: "Отменить учет времени."
