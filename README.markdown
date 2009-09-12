@@ -34,10 +34,15 @@ Run Redmine and have a fun!
 - es by smlghst
 - ru by akrus
 - pl by myself
+- de by Michael Jahn
 
 Thanks for contribution.
 
 ## Changelog
+
+### 0.0.9
+
+- new translations (de)
 
 ### 0.0.8
 
