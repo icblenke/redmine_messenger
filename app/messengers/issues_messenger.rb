@@ -37,6 +37,7 @@ class IssuesMessenger < RedmineMessenger::Base
     end
     
     projects = {}
+
     
     issues.each do |issue|
       projects[issue.project.name] ||= []
@@ -44,7 +45,8 @@ class IssuesMessenger < RedmineMessenger::Base
     end
     
     responce = ll(messenger.language, :messenger_command_issues_found, :found => issues.length) << "\n\n"
-    
+    ActiveRecord::Base.logger.error "sdhkjsadhkjs hdkj shakd hks dhkjs hd"
+
     projects.each do |project, issues|
       responce << project.humanize << ":\n"
       issues.each do |issue|

@@ -96,7 +96,10 @@ messenger_help_not_found: "I'm sorry, I don't understand '{{command}}'.  Type 'h
 messenger_help_group_general: "General"
 
 messenger_help_group_issues: "Issues"
+messenger_help_group_updates: "Status Updates"
 
+messenger_help_command_update_short: "Update Your status."
+messenger_help_command_list_short: "List status messages of all users."
 messenger_help_command_issue_short: "Show information about given issue."
 messenger_help_command_assign_short: "Assign issue to given user."
 messenger_help_command_issues_short: "Show all issues."

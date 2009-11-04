@@ -9,7 +9,7 @@ class UpdatesMessenger < RedmineMessenger::Base
     cmd.param :message, :type => :string, :required => true, :greedy => true
   end
     
-  register_handler :updates do |cmd|
+  register_handler :list do |cmd|
     cmd.group :updates
     cmd.param :count, :type => :integer, :required => false
   end
@@ -17,18 +17,26 @@ class UpdatesMessenger < RedmineMessenger::Base
   def update(messenger, params = {})
     message = params[:message]
     options = {:message => message.strip, :user_id => messenger.user_id, :created_on => Date.today}
-    Status.create(options) unless message.blank?
-    updates(messenger)
+    s = Status.create(options) unless message.blank?
+    messengers = UserMessenger.find(:all, :conditions => "user_id != #{messenger.user_id} and verification_code is NULL")
+    messengers.collect{|m| m.messenger_id}.each do |m_id|
+      RedmineMessenger::Messenger.send_message(m_id, s.message_with_details)
+    end
+    list(messenger)
   end
 
-  def updates(messenger, params = {})
+  def list(messenger, params = {})
     #set the count of status messages to be returned
-    params[:count] ||= 5
-    responce = "Last #{params[:count]} Status"
+    count = (params.blank? || params[:count].blank? ? 5 : params[:count])
+    count = count.to_i
+    responce = "Last #{count} Status\n\n"
 
     #fetch the count status messages
-    Status.find(:all, :limit => count, :order => "id desc").each do |status|
-      responce << "#{status.message} - #{status.user.name}(#{status.created_on})\n\n"
+    project_updates  = Status.recent_updates_for(nil)
+    messenger_updates = Status.find(:all, :order => "id desc", :conditions => "project_id is NULL")
+    updates = project_updates + messenger_updates
+    (updates.sort{|a,b| b.created_at <=> a.created_at})[0..(count -1)].each do |status|
+      responce << status.message_with_details 
     end
     responce
   end
