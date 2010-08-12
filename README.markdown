@@ -35,6 +35,7 @@ Run Redmine and have a fun!
 - ru by akrus
 - pl by myself
 - de by Michael Jahn
+- pt-BR by Diego Oliveira
 
 Thanks for contribution.
 
