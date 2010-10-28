@@ -1,4 +1,4 @@
-class IssuesMessenger < RedmineMessenger::Base
+class TimersMessenger < RedmineMessenger::Base
 
   unless defined?(Redmine::I18n)
     include MessengerI18nPatch
