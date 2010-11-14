@@ -65,7 +65,7 @@ module RedmineMessenger
           super(method, parameters)
         end
       rescue => e
-        RAILS_DEFAULT_LOGGER.error "RedmineMessenger: exception catched '#{e.message}'"
+        Messenger.logger.error "RedmineMessenger: exception catched '#{e.message}':\n" + e.backtrace.join("\n")
       end
 
       # Register message handler (see <tt>Command</tt>).
