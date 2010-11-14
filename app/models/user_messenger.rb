@@ -65,12 +65,8 @@ class UserMessenger < ActiveRecord::Base
       return false unless self.issue.save
     end
     
-    if entry.save
-      timer_cancel
-      true
-    else
-      false
-    end   
+    entry.save!
+    timer_cancel
   end  
   
   def timer_to_minutes
