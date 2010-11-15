@@ -6,6 +6,7 @@ development: &development
   port: 5222
   status: hello world
   ssl: false
+  allow_tls: false
   debug: false
 
 test:

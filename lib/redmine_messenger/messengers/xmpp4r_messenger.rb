@@ -12,7 +12,8 @@ module RedmineMessenger
 
         @client = Jabber::Client.new(Jabber::JID.new(jid))
         
-        @client.use_ssl = true if config['ssl']
+        @client.use_ssl = config['ssl'] || false
+        @client.allow_tls = config['allow_tls'] || false
 
         Jabber::debug = true if config['debug']
         Jabber::logger = @logger
