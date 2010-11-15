@@ -5,7 +5,7 @@ module RedmineMessenger
       def initialize(config, logger)
         super(config)
         
-	@logger = logger
+        @logger = logger
 
         jid = config['jid']
         jid += "/Redmine#{rand(100000)}" unless jid =~ /\//
@@ -15,6 +15,7 @@ module RedmineMessenger
         @client.use_ssl = true if config['ssl']
 
         Jabber::debug = true if config['debug']
+        Jabber::logger = @logger
 
         connect
 
@@ -54,6 +55,19 @@ module RedmineMessenger
               @logger.error "RedmineMessenger: exception catched while receiving status '#{e.message}'\n" + e.backtrace.join("\n")
             end
           end
+        end
+
+        @roster.add_subscription_callback do |item,pres|
+          begin
+            @logger.debug "RedmineMessenger: receiving #{pres.type} from #{pres.from}"
+          rescue => e
+            @logger.error "RedmineMessenger: exception catched while processing subscription '#{e.message}'\n" + e.backtrace.join("\n")
+          end
+        end
+
+        @roster.add_subscription_request_callback do |item,pres|
+          @logger.debug "RedmineMessenger: receiving subscription request from #{pres.from}, accepting it"
+          @roster.accept_subscription(pres.from)
         end
       end
 
