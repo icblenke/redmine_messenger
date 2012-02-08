@@ -2,6 +2,11 @@ class IssuesMessenger < RedmineMessenger::Base
 
   unless defined?(Redmine::I18n)
     include MessengerI18nPatch
+  else
+    def ll(lang, str, value={})
+      value[:locale] = lang.to_s.gsub(%r{(.+)\-(.+)$}) { "#{$1}-#{$2.upcase}" }
+      I18n.t(str.to_s, value)
+    end  
   end
 
   register_handler :issues do |cmd|

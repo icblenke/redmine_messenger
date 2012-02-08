@@ -54,6 +54,7 @@ module RedmineMessenger
     class << self
 
       @instance = nil
+      @logger = nil
 
       # Proxy. Sends given method to instance of messenger (see <tt>create_messenger</tt>).
       def method_missing(method, *params, &block)
@@ -61,6 +62,16 @@ module RedmineMessenger
           @instance = create_messenger
         end
         @instance.send(method, *params, &block)
+      end
+
+      def logger
+        unless @logger
+          logfile = "log/redmine_messenger.log"
+          Rails.logger.info "RedmineMessenger: opening log file " + logfile
+          @logger = Logger.new(logfile)
+          @logger.info "Log file opened"
+        end
+        @logger
       end
       
       private
@@ -78,7 +89,7 @@ module RedmineMessenger
         config = load_config
         messenger_name = "#{config['type'].camelize}Messenger"
         if RedmineMessenger::Messengers.const_defined?(messenger_name)
-          RedmineMessenger::Messengers.const_get(messenger_name).new(config)
+          RedmineMessenger::Messengers.const_get(messenger_name).new(config,self.logger)
         else
           raise "Messenger not found: #{config['type']}"
         end

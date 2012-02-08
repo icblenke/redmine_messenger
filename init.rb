@@ -1,6 +1,6 @@
 require 'redmine'
 
-RAILS_DEFAULT_LOGGER.info 'Starting Messemger Plugin for RedMine'
+Rails.logger.info 'Starting Messenger Plugin for RedMine'
 
 require 'rubygems'
 require 'yaml'
