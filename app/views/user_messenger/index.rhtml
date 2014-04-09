@@ -4,7 +4,7 @@
 
 <%= error_messages_for 'user_messenger' %>
 
-<% form_for :user_messenger, @user_messenger, :url => { :action => "index" }, :builder => TabularFormBuilder, :lang => current_language, :html => { :id => 'my_account_form' } do |f| %>
+<% form_for :user_messenger, @user_messenger, :url => { :action => "index" }, :builder => Redmine::Views::LabelledFormBuilder, :lang => current_language, :html => { :id => 'my_account_form' } do |f| %>
   <div class="splitcontentleft">
       <h3><%=l(:messenger_view_label_configuration)%></h3>
       <div class="box tabular">

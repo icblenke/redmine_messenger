@@ -1,0 +1,126 @@
+messenger_menu_label: "Komunikator"
+
+messenger_view_label_messenger: "Komunikator"
+messenger_view_label_configuration: "Konfiguracja"
+messenger_view_label_help: "Pomoc"
+
+# verification
+
+messenger_view_notice_please_verify: "Zweryfikuj swoje konto za pomocą kodu {{verification_code}}."
+
+messenger_controller_notice_updated: "Konfiguracja została zapisana."
+messenger_controller_notice_updated_with_code: "Konfiguracja została zapisana. Zweryfikuj swoje konto za pomocą kodu {{verification_code}}."
+
+messenger_verify_user_verified: "Weryfikacja zakończona sukcesem. Witamy na pokładzie!"
+messenger_verify_wrong_code: "Nieprawidłowy kod, konto nie zostało aktywowane."
+messenger_verify_user_not_registered: "Twoje konto nie zostało znalezione. Rejestrowałeś się?"
+messenger_verify_not_verified: "Zweryfikuj swoje konto za pomocą otrzymanego kodu."
+
+messenger_welcome_message: "Twój JID został zarejestrowany Redmine Messenger. Dodaj ten kontakt do swojej listy i wpisz kod weryfikacyjny."
+
+# form
+
+field_messenger: "JID"
+field_resume_when_become_online: "Uruchamiaj licznik, gdy status zmienia się na 'dostępny'"
+field_pause_when_become_offline_or_away: "Zatrzymaj licznik, gdy status zmienia się na 'niedostępny'"
+field_issue_status_when_starting_timer: "Zmieniaj status zagadnienia, gdy licznik zostanie włączany"
+field_issue_status_when_finishing_timer: "Zmieniaj status zagadnienia, gdy licznik zostanie wyłączany"
+field_issue_status_when_finishing_timer_with_full_ratio: "Zmieniaj status zagadnienia, gdy licznik zostanie wyłączony i wykonanie prac wynosi 100%%"
+field_messenger_notifications: "Przysyłaj powiadomienia przez komunikator"
+field_assigning_issue_when_starting_timer: "Przypisuj zagadnienie, gdy licznik zostanie włączany"
+
+messenger_options_statuses_dont_change: "nie zmieniaj"
+
+# command: issues
+
+messenger_command_issue_not_assigned_to_you: "Nie można wykonać operacji, ponieważ zagadnienie nie jest do ciebie przypisane."
+messenger_command_issues_found: "Znaleziono {{found}} zagadnień."
+messenger_command_issues_not_found: "Nie ma zagadnienia z '{{issue}}' w nazwie."
+messenger_command_issues_assigned_not_found: "Nie masz przypisanych żadnych zagadnień."
+messenger_command_issue_not_found: "Nie znaleziono zagadnienia."
+messenger_command_issue_status: "status: {{status}}"
+messenger_command_issue_assigned_to: "przypisane do: {{login}}"
+messenger_command_comment_commented: "Komentarz został dodany."
+messenger_command_comment_not_commented: "Komentarz nie został dodany."
+messenger_command_assing_user_not_found: "Użytkownik z loginem {{login}} nie istnieje."
+messenger_command_assing_assigned: "Zagadnienie zostało przypisane do użytkownika {{login}}."
+messenger_command_assing_not_assigned: "Zagadnienie nie zostało przypisane do użytkownika {{login}."
+messenger_command_assing_already_assigned: "Zagadnienie jest już przypisane do użytkownika {{login}}."
+messenger_command_assing_not_assignable_user: "Nie można przypisać zagadnienia do użytkownika {{login}}."
+messenger_command_issue_not_assignable_user: "Nie można wykonać operacji, ponieważ nie masz odpowiednich uprawnień."
+ 
+# command: timers
+        
+messenger_command_timers_issue_not_found: "Nieznaleziono zagadnienia."
+messenger_command_timers_resumed: "Licznik dla '{{issue}}' został uruchomiony."
+messenger_command_timers_not_resumed: "Licznik dla '{{issue}}' był już uruchomiony."
+messenger_command_timers_paused: "Licznik dla '{{issue}}' został zatrzymany."
+messenger_command_timers_not_paused: "Licznik dla '{{issue}}' był już zatrzymany."
+messenger_command_timers_cancelled: "Licznik dla '{{issue}}' został anulowamy."
+messenger_command_timers_finished: "Licznik dla '{{issue}}' został zakończony."
+messenger_command_timers_not_finished: "Licznik dla '{{issue}}' nie został zakończony."
+messenger_command_timers_noted: "Komentarz do licznika dla '{{issue}}' został dodany."
+messenger_command_timers_running: "Licznik dla '{{issue}}' został uruchomiony."
+messenger_command_timers_running_status: "Licznik dla '{{issue}}' został uruchomiony. Przepracowaneś już {{minutes}} minut."
+messenger_command_timers_paused_status: "Licznik dla '{{issue}}' został zakończony."
+messenger_command_timers_running_stats_time: "Godziny zaraportowane dzisiaj przez ciebie: {{hours_logged_by_you_today}}, całościowo przez ciebie: {{hours_logged_by_you}}, przez wszystkich: {{hours_logged_by_all}}."
+messenger_command_timers_running_stats_done_with_estimation: "Wykonano {{done}}%% prac, pozostało {{remaining_hours}} godzin z {{estimated_hours}} oszacowanych."
+messenger_command_timers_running_stats_done: "Wykonano {{done}}%% prac. Czas nie został oszacowany."
+messenger_command_timers_not_running: "Licznik nie został uruchomiony."
+messenger_command_timers_not_running_for_that_issue: "Licznik dla '{{issue}}' nie został uruchomiony."
+messenger_command_timers_resumed_because_of_status_change: "Licznik dla '{{issue}}' został uruchomiony."
+messenger_command_timers_paused_because_of_status_change: "Licznik dla '{{issue}}' był już zatrzymany."
+
+# help
+
+messenger_view_help: "Messenger umożliwia komunikacje z Redmine poprzez komunikator internetowe (obecnie jabber).<br/><br/>
+W formularzu po lewej należy wpisać swój jid (jabber id) i skonfigurować działanie konta. Po zapisaniu swojego formularza otrzymasz kod weryfikujący oraz wiadomość powitalną na zarejestrowanym koncie. Dodaj kontakt który przysłał do wiadomość, będzie on służył do komunikacji z Redmine, oraz wyślij mu swój kod weryfikujący. Po otrzymasz potwierdzenia wszystko jest gotowe do współpracy.<br/><br/>
+Dodatkowa konfiguracja (formularz po lewej):
+<ul>
+<li>zmiany statusów - istnieje możliwość zmiany statusu zagadniej podczas uruchamiania i zatrzymywania licznika; przykładowo uruchamiasz licznik, status zmienia się na 'assigned', zatrzymujesz, zmienia się na 'finished'. Przy zatrzymywaniu licznika istnieje rozróżnienie w zależności od ratio wykonanych prac, inny status można ustawić dla ratio równego 100%%, a inny dla mniejszego niż 100%%</li>
+<li>automatycznie przypisywanie - Podczas uruchamiania licznika, zagadnienie może być automatycznie do ciebie przypisywane</li>
+<li>dostępność - podczas zmian twojej dostępności licznik może być automatycznie uruchamiany (jeśli stajesz się dostępny) lub zatrzymywamy (jeśli stajesz się niedostępny)</li>
+<li>powiadomienia - możliwość otrzymywania notyfikacji przez jabber o wysyłanych do ciebie z Redmine mailach</li>
+</ul>
+Poniżej lista dostępnych komend. Możesz także przejrzeć tą liste, wysyłająć przez jabbera komunikat 'help'.
+"
+
+messenger_error_param_missing: "Niepoprawne parametry. Zobacz 'help {{command}}' aby uzyskać więcej informacji."
+
+messenger_help_header_short: "Pomoc dla Redmine Messenger!"
+messenger_help_header_long: "Pomoc dla '{{command}}'"
+messenger_help_footer_short: "Wpisz 'help <command>' aby uzyskać szczegółowe informacje o komendzie."
+messenger_help_footer_long: "Wpisz 'help' aby uzyskać listę wszystkich komend."
+messenger_help_not_found: "Przykro mi, ale nie znam komendy '{{command}}'. Wpisz 'help' aby uzyskać listę wszystkich komend."
+
+messenger_help_group_general: "Ogólne"
+
+messenger_help_group_issues: "Zagadnienia"
+
+messenger_help_command_issue_short: "Pokaż informacje na temat podanego zagadnienia."
+messenger_help_command_assign_short: "Przypisz zaganienie do podanego użytkownika."
+messenger_help_command_issues_short: "Pokaż listę zagadnień."
+messenger_help_command_comment_short: "Dodaj komentarz do zagadnienia."
+
+messenger_help_command_issue_long: "Pokaż informacje na temat podanego zagadnienia."
+messenger_help_command_assign_long: "Przypisz zaganienie do podanego użytkownika. Opcjonalnie można dodać komentarz do zagadnienia."
+messenger_help_command_issues_long: "Pokaż listę przypisanych zagadnień lub listę zagadnień pasujących do podago wzorca."
+messenger_help_command_comment_long: "Dodaj komentarz do zagadnienia."
+  
+messenger_help_group_timers: Liczniki
+
+messenger_help_command_start_short: "Uruchom licznik dla podanego zagadnienia."
+messenger_help_command_finish_short: "Wyłącz licznik i zaloguj czas."
+messenger_help_command_status_short: "Spradź status swojego licznika."
+messenger_help_command_note_short: "Dodaj komentarz do aktywnego licznika."
+messenger_help_command_pause_short: "Zatrzymaj aktywny licznik."
+messenger_help_command_resume_short: "Włącz zatrzymany licznik."
+messenger_help_command_cancel_short: "Anuluj aktywny licznik."
+
+messenger_help_command_start_long: "Uruchom licznik dla podanego zagadnienia. Opcjonalnie, dodaj komentarz."
+messenger_help_command_finish_long: "Wyłącz licznik. Opcjonalnie, zaloguj czas i dodaj komentarz."
+messenger_help_command_status_long: "Spradź status swojego licznika lub podanego zagadnienia."
+messenger_help_command_note_long: "Dodaj komentarz do aktywnego licznika."
+messenger_help_command_pause_long: "Zatrzymaj aktywny licznik. Opcjonalnie, dodaj komentarz."
+messenger_help_command_resume_long: "Włącz zatrzymany licznik. Opcjonalnie, dodaj komentarz."
+messenger_help_command_cancel_long: "Anuluj aktywny licznik."

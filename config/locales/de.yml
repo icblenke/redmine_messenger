@@ -1,0 +1,127 @@
+de:
+  messenger_menu_label: "Messenger"
+
+  messenger_view_label_messenger: "Messenger"
+  messenger_view_label_configuration: "Konfiguration"
+  messenger_view_label_help: "Hilfe"
+
+  # verification
+
+  messenger_view_notice_please_verify: "Bitte authentifizieren Sie Ihr Messenger Konto mit folgendem Code {{verification_code}}."
+
+  messenger_controller_notice_updated: "Die Konfiguration des Messenger wurde erfolgreich aktualisiert."
+  messenger_controller_notice_updated_with_code: "Die Konfiguration des Messenger wurde erfolgreich aktualisiert. Bitte authentifizieren Sie Ihr Messenger Konto mit folgendem Code {{verification_code}}."
+
+  messenger_verify_user_verified: "Das Konto wurde erfolgreich authentifiziert."
+  messenger_verify_wrong_code: "Der eingebene Code entspricht nicht dem erwarteten Authentifizierungscode."
+  messenger_verify_user_not_registered: "Ihr Messenger Konto wurde nicht gefunden."
+  messenger_verify_not_verified: "Bitte authentifizieren Sie Ihr Messenger Konto zuerst mit dem auf der Konfigurationsseite angegebenen Code."
+
+  messenger_welcome_message: "Ihre JID wurde im Redmine Messenger registriert. Fügen Sie bitte diesen Kontakt Ihrer Messenger Konto Liste hinzu und senden Sie den angegebenen Authentifizierungscode."
+
+  # form
+
+  field_messenger: "JID"
+  field_resume_when_become_online: "Timer fortsetzen, wenn online"
+  field_pause_when_become_offline_or_away: "Timer anhalten, wenn offline oder nicht verfügbar"
+  field_issue_status_when_starting_timer: "Ticket Status setzen, wenn Timer gestartet wird"
+  field_issue_status_when_finishing_timer: "Ticket Status setzen, wenn Timer beendet wird"
+  field_issue_status_when_finishing_timer_with_full_ratio: "Ticket Status setzen, wenn Timer mit 100% beendet wird"
+  field_messenger_notifications: "Benachrichtigungen per Messenger senden"
+  field_assigning_issue_when_starting_timer: "Ticket zuweisen, wenn Timer gestartet wird"
+
+  messenger_options_statuses_dont_change: "nicht setzen"
+
+  # command: issues
+
+  messenger_command_issue_not_assigned_to_you: "Der Vorgang ist nicht erlaubt, da das Ticket Ihnen nicht zugewiesen ist."
+  messenger_command_issues_found: "Es wurde(n) {{found}} Ticket(s) gefunden."
+  messenger_command_issues_not_found: "Es gibt kein Ticket mit '{{issue}}' im Namen."
+  messenger_command_issues_assigned_not_found: "Ihnen wurde kein Ticket zugewiesen."
+  messenger_command_issue_not_found: "Das Ticket wurde nicht gefunden."
+  messenger_command_issue_status: "Status: {{status}}"
+  messenger_command_issue_assigned_to: "zugewiesen an: {{login}}"
+  messenger_command_comment_commented: "Der Kommentar wurde hinzugefügt."
+  messenger_command_comment_not_commented: "Kein Kommentar hinzugefügt."
+  messenger_command_assing_user_not_found: "Der Benutzer mit dem Konto '{{login}}' wurde nicht gefunden."
+  messenger_command_assing_assigned: "Das Ticket wurde dem Nutzer '{{login}}' zugewiesen."
+  messenger_command_assing_not_assigned: "Das Ticket wurde dem Nutzer '{{login}}' nicht zugewiesen."
+  messenger_command_assing_already_assigned: "Das Ticket ist bereits '{{login}}' zugewiesen."
+  messenger_command_assing_not_assignable_user: "Das Ticket kann dem Nutzer '{{login}}' nicht zugewiesen werden."
+  messenger_command_issue_not_assignable_user: "Die Operation kann nicht durchgeführt werden, da Sie nicht genügend Rechte haben."
+
+  # command: timers
+   
+  messenger_command_timers_issue_not_found: "Das Ticket wurde nicht gefunden."
+  messenger_command_timers_resumed: "Der Timer für das Ticket '{{issue}}' wird fortgeführt."
+  messenger_command_timers_not_resumed: "Der Timer für das Ticket '{{issue}}' läuft bereits."
+  messenger_command_timers_paused: "Der Timer für das Ticket '{{issue}}' wurde angehalten."
+  messenger_command_timers_not_paused: "Der Timer für das Ticket '{{issue}}' wurde bereits angehalten."
+  messenger_command_timers_cancelled: "Der Timer für das Ticket '{{issue}}' wurde abgebrochen."
+  messenger_command_timers_finished: "Der Timer für das Ticket '{{issue}}' wurde beendet."
+  messenger_command_timers_not_finished: "Der Timer für das Ticket '{{issue}}' kann nicht beendet werden."
+  messenger_command_timers_noted: "Die Notiz des Timers für das Ticket '{{issue}}' wurde hinzugefügt."
+  messenger_command_timers_running: "Der Timer für das Ticket '{{issue}}' wurde gestaret."
+  messenger_command_timers_running_status: "Der Timer für das Ticket '{{issue}}' läuft bereits seit {{minutes}} Minuten."
+  messenger_command_timers_paused_status: "Der Timer für das Ticket '{{issue}}' wurde angehalten."
+  messenger_command_timers_running_stats_time: "Für dieses Ticket wurden folgende Stunden aufgezeichnet: {{hours_logged_by_you_today}} heute von Ihnen, {{hours_logged_by_you_today}} insgesamt von Ihnen, {{hours_logged_by_all}} insgesamt von allen."
+  messenger_command_timers_running_stats_done_with_estimation: "{{done}}% der Arbeit wurde erledigt, verbleiben ungefähr {{remaining_hours}} Stunden von {{estimated_hours}}."
+  messenger_command_timers_running_stats_done: "{{done}}% der Arbeit wurde erledigt."
+  messenger_command_timers_not_running: "Es wurde kein Timer gestartet."
+  messenger_command_timers_not_running_for_that_issue: "Timer für das Ticket '{{issue}}' wurde nicht gestartet."
+  messenger_command_timers_resumed_because_of_status_change: "Der Timer für das Ticket '{{issue}}' wurde fortgesetzt, da sich der Status geändert hat."
+  messenger_command_timers_paused_because_of_status_change: "Der Timer für das Ticket '{{issue}}' wurde angehalten, da sich der Status geändert hat."
+
+  # help
+
+  messenger_view_help: "Dieses Messenger Plugin erlaubt Ihnen, Redmine per Messenger (Jabber) zu bedienen.<br/><br/>
+Setzen Sie Ihre Jabber ID (JID) auf der linken Seite und ändern Sie ggf. die Einstellungen. Nachdem die Änderungen gespeichert wurden, wird ein Authentifizierungscode angezeigt, welchen Sie bitte als Antwort auf die Willkommen-Nachricht senden. Fügen Sie das Redmine Konto Ihrer Buddy Liste hinzu. Die Registrierung ist damit abgeschlossen.<br/><br/>
+Zusätzliche Einstellungen:
+<ul>
+<li>Änderungen des Ticketstatus - wenn Sie einen Timer starten oder beenden, so wird der diesbezügliche Status des Tickets gesetzt (dabei gibt es einen Unterschied zwischen 100% erledigt und geringeren Werten)</li>
+<li>Automatische Zuweisung - when Sie einen Timer starten, wird das Ticket Ihnen automatisch zugewiesen</li>
+<li>IM Status - wenn Ihr Messenger Konto den Status ändert (online, offline, nicht verfügbar), wird der Timer angehalten oder fortgesetzt</li>
+<li>Benachrichtigungen - alle Emails, welche Ihnen durch Redmine gesendet werden, bekommen Sie zusätzlich über Ihr Messenger Konto zugestellt</li>
+</ul>
+Senden Sie 'help', um eine vollständige Kommandoliste im Messenger zu erhalten. Eine Liste aller Kommandos ist nachfolgend aufgeführt.
+"
+
+  messenger_error_param_missing: "Es fehlen Parameter. Geben Sie bitte 'help {{command}}' für nähere Informationen ein."
+
+  messenger_help_header_short: "Hilfe für den Redmine Messenger!"
+  messenger_help_header_long: "Hilfe für das Kommando '{{command}}'"
+  messenger_help_footer_short: "Geben Sie 'help <command>' für nähere Informationen zu dem Kommando ein."
+  messenger_help_footer_long: "Geben Sie 'help' für eine Übersicht der verfügbaren Kommandos ein."
+  messenger_help_not_found: "Entschuldigung, Ich verstehe das Kommando '{{command}}' nicht.  Geben Sie 'help' für eine Übersicht der verfügbaren Kommandos ein."
+
+  messenger_help_group_general: "Allgemein"
+
+  messenger_help_group_issues: "Tickets"
+
+  messenger_help_command_issue_short: "Zeigt Informationen zu dem Ticket an."
+  messenger_help_command_assign_short: "Weist das Ticket dem angegebenen Nutzer zu."
+  messenger_help_command_issues_short: "Zeigt alle Tickets an, welche Ihnen zugewiesen."
+  messenger_help_command_comment_short: "Fügt einen Kommentar dem Ticket hinzu."
+
+  messenger_help_command_issue_long: "Zeigt Informationen zu dem Ticket an."
+  messenger_help_command_assign_long: "Weist das Ticket dem angegebenen Nutzer zu. Fügt einen Kommentar dem Ticket hinzu, wenn dieser angegeben wurde."
+  messenger_help_command_issues_long: "Zeigt alle Tickets an, welche Ihnen zugewiesen wurden oder dem angegebenen Muster entsprechen."
+  messenger_help_command_comment_long: "Fügt einen Kommentar dem Ticket hinzu."
+
+  messenger_help_group_timers: "Timer"
+
+  messenger_help_command_start_short: "Startet den Timer für das angegebene Ticket."
+  messenger_help_command_finish_short: "Beendet den gestarteten Timer und protokolliert die benötigte Zeit."
+  messenger_help_command_status_short: "Liefert den Status den Timers."
+  messenger_help_command_note_short: "Fügt eine Notiz zum laufenden Timer hinzu."
+  messenger_help_command_pause_short: "Hält den laufenden Timer an."
+  messenger_help_command_resume_short: "Setzt den angehaltenen Timer fort."
+  messenger_help_command_cancel_short: "Bricht den laufenden Timer ab."
+
+  messenger_help_command_start_long: "Startet den Timer für das angegebene Ticket. Fügt ggf. einen angegebenen Kommentar hinzu."
+  messenger_help_command_finish_long: "Beendet den gestarteten Timer und protokolliert die benötigte Zeit.  Fügt ggf. einen angegebenen Kommentar hinzu."
+  messenger_help_command_status_long: "Liefert den Status den Timers."
+  messenger_help_command_note_long: "Fügt eine Notiz zum laufenden Timer hinzu."
+  messenger_help_command_pause_long: "Hält den laufenden Timer an. Fügt ggf. einen angegebenen Kommentar hinzu."
+  messenger_help_command_resume_long: "Setzt den angehaltenen Timer fort. Fügt ggf. einen angegebenen Kommentar hinzu."
+  messenger_help_command_cancel_long: "Bricht den laufenden Timer ab."

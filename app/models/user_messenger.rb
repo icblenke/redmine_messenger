@@ -1,5 +1,9 @@
 class UserMessenger < ActiveRecord::Base
 
+  unless defined?(Redmine::I18n)
+    include MessengerI18nPatch
+  end
+
   belongs_to :user
   belongs_to :issue
   belongs_to :issue_status_when_starting_timer, :class_name => "IssueStatus", :foreign_key => "issue_status_when_starting_timer_id"
@@ -41,7 +45,7 @@ class UserMessenger < ActiveRecord::Base
     entry.user = self.user
     entry.issue = self.issue
     entry.project = self.issue.project if self.issue.project_id
-    entry.activity = Enumeration.find(:first, :conditions => {:opt => "ACTI"})
+    entry.activity = TimeEntryActivity.first
     entry.spent_on = Time.now.to_date
     entry.comments = self.timer_note unless self.timer_note.blank?
     entry.hours = timer_to_hours
@@ -61,12 +65,8 @@ class UserMessenger < ActiveRecord::Base
       return false unless self.issue.save
     end
     
-    if entry.save
-      timer_cancel
-      true
-    else
-      false
-    end   
+    entry.save!
+    timer_cancel
   end  
   
   def timer_to_minutes

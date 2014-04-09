@@ -1,0 +1,129 @@
+messenger_menu_label: "Messenger"
+
+messenger_view_label_messenger: "Messenger"
+messenger_view_label_configuration: "Configuration"
+messenger_view_label_help: "Help"
+
+# verification
+
+messenger_view_notice_please_verify: "Please verify your messenger account with code is {{verification_code}}."
+
+messenger_controller_notice_updated: "Messenger configuration was successfully updated."
+messenger_controller_notice_updated_with_code: "Messenger configuration was successfully updated. Please verify your messenger account with code is {{verification_code}}."
+
+messenger_verify_user_verified: "Succesful verification. Welcome aboard!"
+messenger_verify_wrong_code: "Given code doesn't match to your verification code."
+messenger_verify_user_not_registered: "Your messenger account hasn't been found."
+messenger_verify_not_verified: "Please verify your messenger account with code."
+
+messenger_welcome_message: "Your JID has been registered at Redmine Messenger. Please add this contact to your list and send your verification code."
+
+# form
+
+field_messenger: "JID"
+field_resume_when_become_online: "Resume timer when become online"
+field_pause_when_become_offline_or_away: "Pause timer when become offline/away"
+field_issue_status_when_starting_timer: "Change issue status when starting timer"
+field_issue_status_when_finishing_timer: "Change issue status when finishing timer"
+field_issue_status_when_finishing_timer_with_full_ratio: "Change status when finishing timer with ratio 100%%"
+field_messenger_notifications: "Send notification via messenger"
+field_assigning_issue_when_starting_timer: "Assign issue when starting timer"
+     
+messenger_options_statuses_dont_change: "don't change"
+
+# command: issues
+
+messenger_command_issue_not_assigned_to_you: "Operation not permitted, because issue is not assigned to you."
+messenger_command_issues_found: "Found {{found}} issues."
+messenger_command_issues_not_found: "There is no issue with '{{issue}}' in name."
+messenger_command_issues_assigned_not_found: "You haven't assigned any issue."
+messenger_command_issue_not_found: "Issue can't be found."
+messenger_command_issue_status: "status: {{status}}"
+messenger_command_issue_assigned_to: "assigned to: {{login}}"
+messenger_command_comment_commented: "Comment has been added."
+messenger_command_comment_not_commented: "Comment hasn't been added."
+messenger_command_assing_user_not_found: "User with login {{login}} doesn't exist."
+messenger_command_assing_assigned: "Issue has been assigned to {{login}}."
+messenger_command_assing_not_assigned: "Issue hasn't been assigned to {{login}}."
+messenger_command_assing_already_assigned: "Issue is already assigned to {{login}}."
+messenger_command_assing_not_assignable_user: "Issue cannot be assignet to user {{login}}."
+messenger_command_issue_not_assignable_user: "Operation not permitted, because you don't have proper rights."
+ 
+# command: timers
+   
+messenger_command_timers_issue_not_found: "Issue can't be found."
+messenger_command_timers_resumed: "Timer for issue '{{issue}}' has been resumed."
+messenger_command_timers_not_resumed: "Timer for issue '{{issue}}' has been already running."
+messenger_command_timers_paused: "Timer for issue '{{issue}}' has been paused."
+messenger_command_timers_not_paused: "Timer for issue '{{issue}}' has been already paused."
+messenger_command_timers_cancelled: "Timer for issue '{{issue}}' has been cancelled."
+messenger_command_timers_finished: "Timer for issue '{{issue}}' has been finished."
+messenger_command_timers_not_finished: "Timer for issue '{{issue}}' can't be finished."
+messenger_command_timers_noted: "Timer's note for issue '{{issue}}' has been added."
+messenger_command_timers_running: "Timer for issue '{{issue}}' has been started."
+messenger_command_timers_running_status: "Timer for issue '{{issue}}' has been started. Running for {{minutes}} minutes."
+messenger_command_timers_paused_status: "Timer for issue '{{issue}}' has been paused."
+messenger_command_timers_running_stats_time: "Hours logged for this issue: {{hours_logged_by_you_today}} by you today, {{hours_logged_by_you}} by you, {{hours_logged_by_all}} by everyone."
+messenger_command_timers_running_stats_done_with_estimation: "{{done}}%% of the work performed, remaining {{remaining_hours}} hours of {{estimated_hours}} estimated."
+messenger_command_timers_running_stats_done: "{{done}}%% of the work performed. Time hasn't been estimated."
+messenger_command_timers_not_running: "Timer hasn't been started."
+messenger_command_timers_not_running_for_that_issue: "Timer for '{{issue}}' hasn't been started."
+messenger_command_timers_resumed_because_of_status_change: "Timer for issue '{{issue}}' has been resumed."
+messenger_command_timers_paused_because_of_status_change: "Timer for issue '{{issue}}' has been paused."
+
+# help
+
+messenger_view_help: "Messenger plugin allows you to communicate with Redmine via instant messenger (jabber).<br/><br/>
+Set your jid (jabber id) in the form on the left and configure account. After saving you should receive verification code and the welcome message to your jabber account. Add Redmine account to your buddy and send him verification code. Your registration is complete by now.<br/><br/>
+additional configuration:
+<ul>
+<li>issues' status changing - when you start or finish timer, related issue's status will be changed (there is a different between finishing with ratio equals to 100%% and lower)</li>
+<li>auto-assigning - when you start timer, issue will be automatically assigned to you</li>
+<li>IM visibility - when your jabber account has change its status (offline, online, away), timer will be paused or resumed</li>
+<li>notifications - all of mails sended to you from Redmine will be forwarded to your jabber account</li>
+</ul>
+type 'help' to get commands list. All commands are listed below.
+"
+
+messenger_error_param_missing: "Param missing, see 'help {{command}}' for more information."
+
+messenger_help_header_short: "Help for Redmine Messenger!"
+messenger_help_header_long: "Help for command '{{command}}'"
+messenger_help_footer_short: "Type 'help <command>' for more information about the command."
+messenger_help_footer_long: "Type 'help' for short information about all commands."
+messenger_help_not_found: "I'm sorry, I don't understand '{{command}}'.  Type 'help' for all commands listing."
+
+messenger_help_group_general: "General"
+
+messenger_help_group_issues: "Issues"
+messenger_help_group_updates: "Status Updates"
+
+messenger_help_command_update_short: "Update Your status."
+messenger_help_command_list_short: "List status messages of all users."
+messenger_help_command_issue_short: "Show information about given issue."
+messenger_help_command_assign_short: "Assign issue to given user."
+messenger_help_command_issues_short: "Show all issues."
+messenger_help_command_comment_short: "Add comment to given issue."
+
+messenger_help_command_issue_long: "Show information about given issue."
+messenger_help_command_assign_long: "Assign issue to given user. Add comment if given."
+messenger_help_command_issues_long: "Show all issues that are assigned to you or match given pattern."
+messenger_help_command_comment_long: "Add comment to given issue."
+  
+messenger_help_group_timers: Timers
+
+messenger_help_command_start_short: "Start timer for given issue."
+messenger_help_command_finish_short: "Finish running timer and log time."
+messenger_help_command_status_short: "Get status of your timer."
+messenger_help_command_note_short: "Add note to your running timer."
+messenger_help_command_pause_short: "Pause your running timer."
+messenger_help_command_resume_short: "Resume your paused timer."
+messenger_help_command_cancel_short: "Cancel your running timer."
+
+messenger_help_command_start_long: "Start timer for given issue. Add command if given."
+messenger_help_command_finish_long: "Finish running timer and log time. Log time and add command if given."
+messenger_help_command_status_long: "Get status of your timer."
+messenger_help_command_note_long: "Add note to your running timer."
+messenger_help_command_pause_long: "Pause your running timer. Add command if given."
+messenger_help_command_resume_long: "Resume your paused timer. Add command if given."
+messenger_help_command_cancel_long: "Cancel your running timer."

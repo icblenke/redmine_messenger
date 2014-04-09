@@ -23,7 +23,7 @@ en:
 
   field_messenger: "JID"
   field_resume_when_become_online: "Resume timer when become online"
-  field_pause_when_become_offline_or_away: "Resume timer when become offline/away"
+  field_pause_when_become_offline_or_away: "Pause timer when become offline/away"
   field_issue_status_when_starting_timer: "Change issue status when starting timer"
   field_issue_status_when_finishing_timer: "Change issue status when finishing timer"
   field_issue_status_when_finishing_timer_with_full_ratio: "Change status when finishing timer with ratio 100%"

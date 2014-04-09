@@ -1,0 +1,121 @@
+"pt-BR":
+   messenger_menu_label: "Messenger"
+   messenger_view_label_messenger: "Messenger"
+   messenger_view_label_configuration: "Configuração"
+   messenger_view_label_help: "Ajuda"
+
+   # verification
+   messenger_view_notice_please_verify: "Por favor, verifique sua conta do messenger. O código é {{verification_code}}."
+   messenger_controller_notice_updated: "A configuração do messenger foi atualizada com sucesso."
+   messenger_controller_notice_updated_with_code: "A configuração do messenger foi atualizada com sucesso. Por favor, verifique sua conta do Messenger. O código é  {{verification_code}}."
+   messenger_verify_user_verified: "Verificação foi bem sucedida. Bem-vindo!"
+   messenger_verify_wrong_code: "O código fornecido não confere com o código de verificação."
+   messenger_verify_user_not_registered: "Sua conta não foi encontrada."
+   messenger_verify_not_verified: "Por favor, verifique sua conta do Messenger passando o código fornecido."
+
+   messenger_welcome_message: "Seu JID foi registrado no Redmine Messenger. Por favor, adicione este contato à sua lista e envie o seu código de verificação."
+
+   # form
+   field_messenger: "JID"
+   field_resume_when_become_online: "Reiniciar o cronômetro quando ficar online."
+   field_pause_when_become_offline_or_away: "Pausa o cronômetro quando ficar offline/away."
+   field_issue_status_when_starting_timer: "Alterar o status do ticket quando se inicia o cronômetro."
+   field_issue_status_when_finishing_timer: "Alterar o status quando finalizar o cronômetro."
+   field_issue_status_when_finishing_timer_with_full_ratio: "Mudar o status para 100%% de progresso quando finalizar o cronômetro."
+   field_messenger_notifications: "Enviar notificações via messenger."
+   field_assigning_issue_when_starting_timer: "Atribuir ticket ao iniciar o cronômetro."
+
+   messenger_options_statuses_dont_change: "Não mudar"
+   
+   # command: issues
+   messenger_command_issue_not_assigned_to_you: "A operação não permitida porque este ticket não está atribuido a você."
+   messenger_command_issues_found: "Foram encontrados {{found}} tickets."
+   messenger_command_issues_not_found: "Não existe nenhum ticket com  '{{issue}}' no nome."
+   messenger_command_issues_assigned_not_found: "Não há tickets atribuidos a você."
+   messenger_command_issue_not_found: "Ticket não encontrado."
+   messenger_command_issue_status: "Status: {{status}}"
+   messenger_command_issue_assigned_to: "Atribuido para: {{login}}"
+   messenger_command_comment_commented: "Seu comentário adicionado!"
+   messenger_command_comment_not_commented: "Não foi possivel adicionar seu comentário."
+   messenger_command_assing_user_not_found: "O usuário {{login}} não existe."
+   messenger_command_assing_assigned: "Ticket foi atribuido para {{login}}."
+   messenger_command_assing_not_assigned: "Não foi possivel atribuir o ticket para {{login}}."
+   messenger_command_assing_already_assigned: "Esse ticket já está atribuido para {{login}}."
+   messenger_command_assing_not_assignable_user: "Ticket não pode ser atribuido para {{login}}."
+   messenger_command_issue_not_assignable_user: "Operação não permitida. Você não tem privilégio para fazer esta operação."
+   
+   # command: timers
+   messenger_command_timers_issue_not_found: "Ticket não encontrado."
+   messenger_command_timers_resumed: "O cronômetro para o ticket '{{issue}}' foi reiniciado."
+   messenger_command_timers_not_resumed: "O cronômetro para o ticket '{{issue}}' já foi iniciado."
+   messenger_command_timers_paused: "O cronômetro para o ticket '{{issue}}' foi pausado."
+   messenger_command_timers_not_paused: "O cronômetro para o ticket '{{issue}}' já foi pausado."
+   messenger_command_timers_cancelled: "O cronômetro para o ticket '{{issue}}' foi cancelado."
+   messenger_command_timers_finished: "O cronômetro para o ticket '{{issue}}' foi encerrado."
+   messenger_command_timers_not_finished: "O cronômetro para o ticket '{{issue}}' não pode ser encerrado."
+   messenger_command_timers_noted: "Uma anotação para o cronômetro do ticket '{{issue}}' foi adicionado."
+   messenger_command_timers_running: "O cronômetro para o ticket '{{issue}}' foi iniciado."
+   messenger_command_timers_running_status: "O cronômetro para o ticket '{{issue}}' foi iniciado há {{minutes}} minutos atrás."
+   messenger_command_timers_paused_status: "O cronômetro para o ticket '{{issue}}' foi pausado."
+   messenger_command_timers_running_stats_time: "Horas gastas no ticket: {{hours_logged_by_you_today}} horas gastas por você hoje, {{hours_logged_by_you}} gastas por você desde a criação, {{hours_logged_by_all}} por todos."
+   messenger_command_timers_running_stats_done_with_estimation: "Progresso atual: {{done}}%%, restando {{remaining_hours}} horas de um total de {{estimated_hours}} horas estimadas."
+   messenger_command_timers_running_stats_done: "Progresso atual: {{done}}%%. Não há tempo estimado para este ticket."
+   messenger_command_timers_not_running: "O cronômetro não foi iniciado."
+   messenger_command_timers_not_running_for_that_issue: "O cronômetro para o ticket '{{issue}}' não foi iniciado."
+   messenger_command_timers_resumed_because_of_status_change: "O cronômetro para o ticket '{{issue}}' foi reiniciado."
+   messenger_command_timers_paused_because_of_status_change: "O cronômetro para o ticket '{{issue}}' foi pausado."
+
+
+   # help
+
+   messenger_view_help: "O plugin Messenger permite a você se comunicar com o Redmine via mensageiro instantâneo (Jabber).<br/><br/>
+Insira seu jid (jabber id) no formulário a sua esquerda para configurar sua conta. Após enviar seu jid você receberá um codigo de verificação e uma mensagem de boas vindas. Adicione a conta do Redmine na sua lista de amigos e envie para ele seu codigo de verificação. Seu registro estará completo após isso.<br/><br/>
+Configurações adicionais:
+<ul>
+<li>Alterando o status de um ticket: Quando você iniciar ou encerrar um cronômetro o ticket relacionado irá ter o status alterado (há diferença entre indicar o progresso em 100%% e indicar um menor progresso).</li>
+<li>Atribuição automatica: Quando você iniciar um cronômetro o ticket irá automaticamente ser atribuido a você.</li>
+<li>Usando o status do mensageiro: Quando você alterar seu status (offline, online, ausente), o cronômetro automaticamente será pausado ou reiniciado.</li>
+<li>Notificações: Todos os emails enviados para você pelo Redmine podem ser enviados tambem para o seu mensageiro.</li>
+</ul>
+Digite 'help' para receber a lista de comandos. Todos os comandos serão listados abaixo.
+"
+
+   messenger_error_param_missing: "Parâmetro faltando. Veja 'help {{command}}' para mais informações."
+
+   messenger_help_header_short: "Ajuda do Redmine Messenger!"
+   messenger_help_header_long: "Ajuda para o comando '{{command}}'."
+   messenger_help_footer_short: "Digite 'help <command>' para maiores informações sobre o comando."
+   messenger_help_footer_long: "Digite 'help' para listar todos os comandos."
+   messenger_help_not_found: "Me desculpe, eu não reconheço o comando '{{command}}'. Digite 'help' para uma listagem de todos os comandos."
+
+   messenger_help_group_general: "Geral"
+
+   messenger_help_group_issues: "Tickets"
+
+   messenger_help_command_issue_short: "Mostrar informações sobre o ticket informado."
+   messenger_help_command_assign_short: "Atribuir o ticket para o usuário informado."
+   messenger_help_command_issues_short: "Mostrar todos os tickets."
+   messenger_help_command_comment_short: "Adicionar comentários ao ticket informado."
+
+   messenger_help_command_issue_long: "Mostrar informações sobre o ticket informado."
+   messenger_help_command_assign_long: "Atribuir ticket ao usuário informado. Adiciona um comentário caso informado."
+   messenger_help_command_issues_long: "Mostra todos os tickets atribuidos a você ou a um determinado padrão."
+   messenger_help_command_comment_long: "Adicionado comentário ao ticket informado."
+  
+   messenger_help_group_timers: Timers
+
+   messenger_help_command_start_short: "Inicia o cronômetro para o ticket informado."
+   messenger_help_command_finish_short: "Finaliza o cronômetro e registra o tempo gasto."
+   messenger_help_command_status_short: "Obtem o status do seu cronômetro."
+   messenger_help_command_note_short: "Adiciona uma nota ao seu cronômetro."
+   messenger_help_command_pause_short: "Pausa o seu cronômetro."
+   messenger_help_command_resume_short: "Reinicia o seu cronômetro."
+   messenger_help_command_cancel_short: "Cancela o seu cronômetro."
+
+   messenger_help_command_start_long: "Inicia o cronômetro para o ticket informado. Adiciona um comando caso informado."
+   messenger_help_command_finish_long: "Finaliza o cronômetro e registra o tempo gasto. Adiciona um comando caso informado."
+   messenger_help_command_status_long: "Obtem o status do seu cronômetro."
+   messenger_help_command_note_long: "Adiciona uma nota ao seu cronômetro."
+   messenger_help_command_pause_long: "Pausa o seu cronômetro. Adiciona um comando caso informado."
+   messenger_help_command_resume_long: "Reinicia o seu cronômetro. Adiciona um comando caso informado."
+   messenger_help_command_cancel_long: "Cancela o seu cronômetro."

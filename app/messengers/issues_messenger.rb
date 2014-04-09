@@ -1,5 +1,14 @@
 class IssuesMessenger < RedmineMessenger::Base
 
+  unless defined?(Redmine::I18n)
+    include MessengerI18nPatch
+  else
+    def ll(lang, str, value={})
+      value[:locale] = lang.to_s.gsub(%r{(.+)\-(.+)$}) { "#{$1}-#{$2.upcase}" }
+      I18n.t(str.to_s, value)
+    end  
+  end
+
   register_handler :issues do |cmd|
     cmd.group :issues
     cmd.param :name, :type => :string, :required => false, :greedy => true
@@ -33,6 +42,7 @@ class IssuesMessenger < RedmineMessenger::Base
     end
     
     projects = {}
+
     
     issues.each do |issue|
       projects[issue.project.name] ||= []
@@ -40,7 +50,8 @@ class IssuesMessenger < RedmineMessenger::Base
     end
     
     responce = ll(messenger.language, :messenger_command_issues_found, :found => issues.length) << "\n\n"
-    
+    ActiveRecord::Base.logger.error "sdhkjsadhkjs hdkj shakd hks dhkjs hd"
+
     projects.each do |project, issues|
       responce << project.humanize << ":\n"
       issues.each do |issue|

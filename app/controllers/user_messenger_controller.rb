@@ -2,6 +2,10 @@ class UserMessengerController < ApplicationController
 
   unloadable
 
+  unless defined?(Redmine::I18n)
+    include MessengerI18nPatch
+  end
+
   def index    
     user = User.current
     
@@ -15,7 +19,7 @@ class UserMessengerController < ApplicationController
     @user_messenger = UserMessenger.find_by_user_id(user.id) 
     @user_messenger ||= UserMessenger.new
     if request.post?
-      @user_messenger.user = user
+      @user_messenger.user = user unless @user_messenger.user
       @user_messenger.messenger_id = params[:user_messenger][:messenger_id]      
       @user_messenger.resume_when_become_online = params[:user_messenger][:resume_when_become_online]
       @user_messenger.pause_when_become_offline_or_away = params[:user_messenger][:pause_when_become_offline_or_away]
